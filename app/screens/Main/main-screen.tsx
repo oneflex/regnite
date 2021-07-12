@@ -1,27 +1,32 @@
-import React from "react"
-import { View, ViewStyle, Text, TextStyle } from "react-native"
-import { useNavigation } from "@react-navigation/native"
-import { color, spacing, typography } from "../../theme"
+import React from "react";
+import { View, ViewStyle } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { spacing } from "../../theme";
+import Todo from "../../components/todo/todo";
 
-const FULL: ViewStyle = { flex: 1 }
+const FULL: ViewStyle = { flex: 1 };
 
 const CONTAINER: ViewStyle = {
-  paddingHorizontal: spacing[4]
-}
-
-const TEXT: TextStyle = {
-  color: color.palette.orange,
-  fontFamily: typography.primary
-}
+  paddingHorizontal: spacing[4],
+};
 
 export function MainScreen() {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
 
   return (
     <View style={FULL}>
       <View style={CONTAINER}>
-        <Text style={TEXT}>Hello World!</Text>
+        <Todo description="Hilda Powell" isCompleted={true} />
+        <Todo description="William Banks" isCompleted={true} />
+        <Todo description="Celia Carr" isCompleted={false} />
+        <Todo description="Nathaniel Collins" isCompleted={true} />
+        <Todo description="Lulu Rhodes" isCompleted={true} />
+        <Todo description="Frank Schultz" isCompleted={false} />
+        <Todo description="Eunice French" isCompleted={false} />
+        <Todo description="Craig Newman" isCompleted={false} />
+        <Todo description="Nettie Wolfe" isCompleted={true} />
+        <Todo description="Julian Bennett" isCompleted={false} />
       </View>
     </View>
-  )
-};
+  );
+}

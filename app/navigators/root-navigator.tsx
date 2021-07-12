@@ -4,11 +4,11 @@
  * and a "main" flow (which is contained in your MainNavigator) which the user
  * will use once logged in.
  */
-import React from "react"
-import { NavigationContainer, NavigationContainerRef } from "@react-navigation/native"
-import { createStackNavigator } from "@react-navigation/stack"
-import { MainNavigator } from "./main-navigator"
-import { color } from "../theme"
+import React from "react";
+import { NavigationContainer, NavigationContainerRef } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { MainNavigator } from "./main-navigator";
+import { color } from "../theme";
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -21,16 +21,16 @@ import { color } from "../theme"
  *   https://reactnavigation.org/docs/typescript#type-checking-the-navigator
  */
 export type RootParamList = {
-  mainStack: undefined
-}
+  mainStack: undefined;
+};
 
-const Stack = createStackNavigator<RootParamList>()
+const Stack = createStackNavigator<RootParamList>();
 
 const RootStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{
-        cardStyle: { backgroundColor: color.palette.deepPurple },
+        cardStyle: { backgroundColor: color.background },
         headerShown: false,
       }}
     >
@@ -42,8 +42,8 @@ const RootStack = () => {
         }}
       />
     </Stack.Navigator>
-  )
-}
+  );
+};
 
 export const RootNavigator = React.forwardRef<
   NavigationContainerRef,
@@ -53,7 +53,7 @@ export const RootNavigator = React.forwardRef<
     <NavigationContainer {...props} ref={ref}>
       <RootStack />
     </NavigationContainer>
-  )
-})
+  );
+});
 
-RootNavigator.displayName = "RootNavigator"
+RootNavigator.displayName = "RootNavigator";
