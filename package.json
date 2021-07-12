@@ -2,6 +2,7 @@
   "private": true,
   "scripts": {
     "start": "expo start",
+    "g": "npx ignite-cli generate",
     "test:e2e": "./bin/downloadExpoApp.sh && detox test --configuration ios.sim.expo",
     "build:e2e": "detox build -c ios.sim.expo",
     "ci:test:e2e": "detox test -c ios.sim.release -l verbose --cleanup",
