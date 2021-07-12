@@ -1,11 +1,10 @@
 export const palette = {
-  black: "#1d1d1d",
+  blueWhite: "#fafbff",
   white: "#ffffff",
-  offWhite: "#e6e6e6",
-  orange: "#FBA928",
-  orangeDarker: "#EB9918",
-  lightGrey: "#939AA4",
-  lighterGrey: "#CDD4DA",
+  darkBlue: "#243262",
+  lightBlue: "#0476ff",
+  pink: "#e80bf6",
+  grey: "#8f9bc9",
+  lightGrey: "#979ec6",
   angry: "#dd3333",
-  deepPurple: "#5D2555",
-}
+};

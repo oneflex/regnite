@@ -1,37 +1,24 @@
-import * as React from "react"
-import { StyleProp, TextStyle, View, ViewStyle } from "react-native"
-import { observer } from "mobx-react-lite"
-import { color, typography } from "../../theme"
-import { Text } from "../"
-import { flatten } from "ramda"
+import * as React from "react";
+import { <%= props.pascalCaseName %>Props } from "./<%= props.pascalCaseName %>.props";
+import { TextStyle, View, ViewStyle, Text } from "react-native";
 
 const CONTAINER: ViewStyle = {
-  justifyContent: "center",
-}
+  flexDirection: "row",
+};
 
 const TEXT: TextStyle = {
-  fontFamily: typography.primary,
-  fontSize: 14,
-  color: color.primary,
-}
+  justifyContent: "center",
+  color: 
+};
 
-export interface <%= props.pascalCaseName %>Props {
-  /**
-   * An optional style override useful for padding & margin.
-   */
-  style?: StyleProp<ViewStyle>
-}
-
-/**
- * Describe your component here
- */
-export const <%= props.pascalCaseName %> = observer(function <%= props.pascalCaseName %>(props: <%= props.pascalCaseName %>Props) {
-  const { style } = props
-  const styles = flatten([CONTAINER, style])
+function <%= props.pascalCaseName %>(props: <%= props.pascalCaseName %>Props) {
+  const { style} = props;
 
   return (
-    <View style={styles}>
-      <Text style={TEXT}>Hello</Text>
+    <View style={[CONTAINER, style]}>
+      <Text style={TEXT}><%= props.pascalCaseName %></Text>
     </View>
-  )
-})
+  );
+}
+
+export default <%= props.pascalCaseName %>;
