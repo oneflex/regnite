@@ -5,7 +5,6 @@ import Todo from "../todo/todo";
 
 const CONTAINER: ViewStyle = {
   flexDirection: "row",
-  flex: 1,
 };
 
 function TodoList(props: TodoListProps) {
@@ -16,7 +15,7 @@ function TodoList(props: TodoListProps) {
       <FlatList
         data={props.data}
         renderItem={({ item }): any => <Todo {...item} />}
-        keyExtractor={(todo) => todo.id}
+        keyExtractor={todo => todo.id}
       />
     </View>
   );
