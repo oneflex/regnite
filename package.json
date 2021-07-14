@@ -88,7 +88,8 @@
     "printWidth": 80,
     "singleQuote": false,
     "trailingComma": "all",
-    "semi": true
+    "semi": true,
+    "arrowParens": "avoid"
   },
   "eslintConfig": {
     "root": true,
