@@ -3,19 +3,6 @@
   "scripts": {
     "start": "expo start",
     "g": "npx ignite-cli generate",
-    "test:e2e": "./bin/downloadExpoApp.sh && detox test --configuration ios.sim.expo",
-    "build:e2e": "detox build -c ios.sim.expo",
-    "ci:test:e2e": "detox test -c ios.sim.release -l verbose --cleanup",
-    "ci:build:e2e": "detox build -c ios.sim.release",
-    "compile": "tsc --noEmit -p . --pretty",
-    "format": "npm-run-all format:*",
-    "format:js": "prettier --write \"app/**/*.js\"",
-    "format:json": "prettier --write \"app/**/*.json\"",
-    "format:md": "prettier --write \"**/*.md\"",
-    "format:ts": "prettier --write \"app/**/*.ts{,x}\"",
-    "lint": "eslint App.js app storybook test --fix --ext .js,.ts,.tsx && yarn format",
-    "patch": "patch-package",
-    "storybook": "start-storybook -p 9001 -c ./storybook",
     "test": "jest",
     "adb": "adb reverse tcp:9090 tcp:9090 && adb reverse tcp:3000 tcp:3000 && adb reverse tcp:9001 tcp:9001 && adb reverse tcp:8081 tcp:8081",
     "postinstall": "node ./bin/postInstall",
@@ -34,16 +21,8 @@
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/native": "5.9.3",
     "@react-navigation/stack": "5.12.8",
-    "apisauce": "2.0.0",
     "expo": "40.0.1",
-    "expo-localization": "9.1.0",
     "expo-status-bar": "~1.0.4",
-    "i18n-js": "3.8.0",
-    "ignite-cli": "^7.0.6",
-    "mobx": "6.1.8",
-    "mobx-react-lite": "3.2.0",
-    "mobx-state-tree": "5.0.1",
-    "query-string": "7.0.0",
     "react": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
     "react-native-gesture-handler": "1.10.3",
@@ -51,8 +30,7 @@
     "react-native-safe-area-context": "3.1.9",
     "react-native-screens": "2.18.1",
     "react-native-svg": "12.1.0",
-    "react-native-unimodules": "0.12.0",
-    "validate.js": "0.13.1"
+    "react-native-unimodules": "0.12.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -69,8 +47,6 @@
     "@typescript-eslint/parser": "4.10.0",
     "babel-jest": "26.6.3",
     "babel-loader": "8.2.2",
-    "detox": "17.14.5",
-    "detox-expo-helpers": "0.6.0",
     "eslint": "7.15.0",
     "eslint-config-prettier": "7.0.0",
     "eslint-config-standard": "16.0.2",
@@ -79,7 +55,6 @@
     "eslint-plugin-promise": "4.2.1",
     "eslint-plugin-react": "7.21.5",
     "eslint-plugin-react-native": "3.10.0",
-    "expo-detox-hook": "1.0.10",
     "fbjs-scripts": "3.0.0",
     "jest": "^25.5.4",
     "jest-circus": "25.5.4",
@@ -94,7 +69,6 @@
     "react-native-clean-project": "^3.6.3",
     "react-native-web": "^0.16.3",
     "react-powerplug": "1.0.0",
-    "solidarity": "2.3.1",
     "typescript": "4.2.3"
   },
   "jest": {
@@ -115,18 +89,6 @@
     "singleQuote": false,
     "trailingComma": "all",
     "semi": true
-  },
-  "detox": {
-    "test-runner": "jest",
-    "configurations": {
-      "ios.sim.debug": null,
-      "ios.sim.release": null,
-      "ios.sim.expo": {
-        "binaryPath": "bin/Exponent.app",
-        "type": "ios.simulator",
-        "name": "iPhone 11"
-      }
-    }
   },
   "eslintConfig": {
     "root": true,
