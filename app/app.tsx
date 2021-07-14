@@ -26,12 +26,13 @@ import {
   setRootNavigation,
   useNavigationPersistence,
 } from "./navigators";
-
-// This puts screens in a native ViewController or Activity. If you want fully native
-// stack navigation, use `createNativeStackNavigator` in place of `createStackNavigator`:
-// https://github.com/kmagiera/react-native-screens#using-native-stack-navigator
 import { enableScreens } from "react-native-screens";
 import { color } from "./theme";
+import { Provider } from "react-redux";
+import configureStore from "./store/configureStore";
+
+const store = configureStore();
+
 enableScreens();
 
 export const NAVIGATION_PERSISTENCE_KEY = "NAVIGATION_STATE";
@@ -64,15 +65,17 @@ function App() {
 
   // otherwise, we're ready to render the app
   return (
-    <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-      <SafeAreaView style={FULL}>
-        <RootNavigator
-          ref={navigationRef}
-          initialState={initialNavigationState}
-          onStateChange={onNavigationStateChange}
-        />
-      </SafeAreaView>
-    </SafeAreaProvider>
+    <Provider store={store}>
+      <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+        <SafeAreaView style={FULL}>
+          <RootNavigator
+            ref={navigationRef}
+            initialState={initialNavigationState}
+            onStateChange={onNavigationStateChange}
+          />
+        </SafeAreaView>
+      </SafeAreaProvider>
+    </Provider>
   );
 }
 

@@ -1,10 +1,6 @@
-export const createTodo = todo => ({
-  type: "CREATE_TODO",
+export const addTodo = todo => ({
+  type: "ADD_TODO",
   payload: { todo },
-});
-
-export const getTodos = () => ({
-  type: "GET_TODO",
 });
 
 export const removeTodo = id => ({
