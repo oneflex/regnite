@@ -1,20 +1,11 @@
 import * as React from "react";
 import { TodoListProps } from "./todo-list.props";
-import {
-  TextStyle,
-  View,
-  ViewStyle,
-  FlatList,
-  ListRenderItem,
-} from "react-native";
+import { View, ViewStyle, FlatList } from "react-native";
 import Todo from "../todo/todo";
 
 const CONTAINER: ViewStyle = {
   flexDirection: "row",
-};
-
-const TEXT: TextStyle = {
-  justifyContent: "center",
+  flex: 1,
 };
 
 function TodoList(props: TodoListProps) {
