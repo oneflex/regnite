@@ -5,6 +5,7 @@ import Todo from "../todo/todo";
 
 const CONTAINER: ViewStyle = {
   flexDirection: "row",
+  flex: 1,
 };
 
 function TodoList(props: TodoListProps) {
