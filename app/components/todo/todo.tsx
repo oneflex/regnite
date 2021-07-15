@@ -1,6 +1,12 @@
 import * as React from "react";
 import { TodoProps } from "./todo.props";
-import { TextStyle, View, ViewStyle, Text } from "react-native";
+import {
+  TextStyle,
+  View,
+  ViewStyle,
+  Text,
+  TouchableOpacity,
+} from "react-native";
 import { color, spacing, typography } from "../../theme";
 import Checkbox from "../checkbox/checkbox";
 
@@ -43,14 +49,16 @@ function Todo(props: TodoProps) {
   const { style, description, isCompleted } = props;
 
   return (
-    <View style={[CONTAINER, style]}>
-      <Checkbox isChecked={isCompleted} size={27} />
-      <View style={DESCRIPTION_CONTAINER}>
-        <Text style={isCompleted ? DESCRIPTION_CROSSED : DESCRIPTION}>
-          {description}
-        </Text>
+    <TouchableOpacity onPress={() => console.log("pressed")}>
+      <View style={[CONTAINER, style]}>
+        <Checkbox isChecked={isCompleted} size={27} />
+        <View style={DESCRIPTION_CONTAINER}>
+          <Text style={isCompleted ? DESCRIPTION_CROSSED : DESCRIPTION}>
+            {description}
+          </Text>
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
