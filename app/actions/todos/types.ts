@@ -1,3 +1,9 @@
+export interface TodoData {
+  description: string;
+  isCompleted: boolean;
+  type: "personal" | "work";
+}
+
 export interface Updates {
   description?: string;
   isCompleted?: boolean;
