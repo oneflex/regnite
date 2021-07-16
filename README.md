@@ -1,3 +1,3 @@
-# IgniteTodo
+# regnite-todo
 
-## An exmaple todo app created with the ignite boilerplate
+## An example todo app created with the ignite-bowser boilerplate and redux supports
