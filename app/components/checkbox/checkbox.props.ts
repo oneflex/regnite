@@ -10,6 +10,10 @@ export interface CheckboxProps {
    */
   isChecked: boolean;
   /**
+   * Color for the unchecked checkbox
+   */
+  color: string;
+  /**
    * Container style overrides
    */
   style?: ViewStyle;

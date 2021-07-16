@@ -9,7 +9,7 @@ const CONTAINER: ViewStyle = {};
 const Checkbox: React.FC<CheckboxProps> = props => {
   const style: any = {
     background: props.isChecked ? "#D4DBFA" : color.transparent,
-    border: props.isChecked ? "#D4DBFA" : "rgba(199, 78, 221, 1)",
+    border: props.isChecked ? "#D4DBFA" : props.color,
     checkMark: props.isChecked ? "white" : color.transparent,
   };
 

@@ -24,7 +24,6 @@ const CONTAINER: ViewStyle = {
   },
   shadowOpacity: 0.09,
   shadowRadius: 2.65,
-
   elevation: 4,
 };
 
@@ -46,12 +45,16 @@ const DESCRIPTION_CROSSED: TextStyle = {
 };
 
 const TodoItem: React.FC<TodoProps> = props => {
-  const { style, description, isCompleted } = props;
+  const { style, description, isCompleted, type } = props;
 
   return (
     <TouchableOpacity onPress={() => console.log("pressed")}>
       <View style={[CONTAINER, style]}>
-        <Checkbox isChecked={isCompleted} size={27} />
+        <Checkbox
+          isChecked={isCompleted}
+          size={27}
+          color={type === "personal" ? color.primary : color.secondaryPrimary}
+        />
         <View style={DESCRIPTION_CONTAINER}>
           <Text style={isCompleted ? DESCRIPTION_CROSSED : DESCRIPTION}>
             {description}

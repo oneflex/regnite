@@ -4,7 +4,7 @@ import { spacing } from "../../theme";
 import TodoList from "../../components/todo-list/todo-list";
 import Heading from "../../components/heading/heading";
 import SubHeading from "../../components/sub-heading/sub-heading";
-import { todos } from "../../test/fixtures";
+import NewTodoForm from "../../components/new-todo-form/new-todo-form";
 
 const FULL: ViewStyle = { flex: 1 };
 
@@ -17,8 +17,9 @@ export function MainScreen() {
     <View style={FULL}>
       <View style={CONTAINER}>
         <Heading text="What's up, Joy!" />
+        <NewTodoForm />
         <SubHeading text="TODAY'S TASKS" />
-        <TodoList data={todos} />
+        <TodoList />
       </View>
     </View>
   );

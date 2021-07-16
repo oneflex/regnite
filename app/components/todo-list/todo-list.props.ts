@@ -1,10 +1,11 @@
 import { ViewStyle } from "react-native";
+import { Todo } from "../../types";
 
 export interface TodoListProps {
   /**
    * array of todo objects
    */
-  data: Array<any>;
+  todos: Array<Todo>;
   /**
    * Container style overrides
    */
