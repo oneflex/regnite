@@ -1,12 +1,6 @@
 import * as React from "react";
 import { NewTodoFormProps } from "./new-todo-form.props";
-import {
-  View,
-  ViewStyle,
-  TextInput,
-  TouchableOpacity,
-  Text,
-} from "react-native";
+import { View, ViewStyle, TextInput } from "react-native";
 import SubHeading from "../sub-heading/sub-heading";
 import { useState } from "react";
 import { color, spacing } from "../../theme";
