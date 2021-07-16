@@ -14,6 +14,10 @@ export interface CheckboxProps {
    */
   color: string;
   /**
+   * A callback function to run when checkbox is pressed
+   */
+  handlePress: () => void;
+  /**
    * Container style overrides
    */
   style?: ViewStyle;

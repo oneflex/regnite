@@ -1,14 +1,10 @@
 import * as React from "react";
 import { TodoProps } from "./todo-item.props";
-import {
-  TextStyle,
-  View,
-  ViewStyle,
-  Text,
-  TouchableOpacity,
-} from "react-native";
+import { TextStyle, View, ViewStyle, Text } from "react-native";
 import { color, spacing, typography } from "../../theme";
+import { connect } from "react-redux";
 import Checkbox from "../checkbox/checkbox";
+import { updateTodo } from "../../actions/todos/todos";
 
 const CONTAINER: ViewStyle = {
   flexDirection: "row",
@@ -45,24 +41,29 @@ const DESCRIPTION_CROSSED: TextStyle = {
 };
 
 const TodoItem: React.FC<TodoProps> = props => {
-  const { style, description, isCompleted, type } = props;
+  const { style, description, isCompleted, type, id } = props;
 
   return (
-    <TouchableOpacity onPress={() => console.log("pressed")}>
-      <View style={[CONTAINER, style]}>
-        <Checkbox
-          isChecked={isCompleted}
-          size={27}
-          color={type === "personal" ? color.primary : color.secondaryPrimary}
-        />
-        <View style={DESCRIPTION_CONTAINER}>
-          <Text style={isCompleted ? DESCRIPTION_CROSSED : DESCRIPTION}>
-            {description}
-          </Text>
-        </View>
+    <View style={[CONTAINER, style]}>
+      <Checkbox
+        isChecked={isCompleted}
+        size={27}
+        color={type === "personal" ? color.primary : color.secondaryPrimary}
+        handlePress={() => props.handleClickCheckbox(id, isCompleted)}
+      />
+      <View style={DESCRIPTION_CONTAINER}>
+        <Text style={isCompleted ? DESCRIPTION_CROSSED : DESCRIPTION}>
+          {description}
+        </Text>
       </View>
-    </TouchableOpacity>
+    </View>
   );
 };
 
-export default TodoItem;
+const mapDispatchToProps = (dispatch: any) => ({
+  handleClickCheckbox: (id: string, isCompleted: boolean) => {
+    dispatch(updateTodo(id, { isCompleted: !isCompleted }));
+  },
+});
+
+export default connect(undefined, mapDispatchToProps)(TodoItem);

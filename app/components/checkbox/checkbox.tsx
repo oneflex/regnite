@@ -1,6 +1,6 @@
 import * as React from "react";
 import { CheckboxProps } from "./Checkbox.props";
-import { View, ViewStyle } from "react-native";
+import { TouchableOpacity, ViewStyle } from "react-native";
 import { color } from "../../theme";
 import Svg, { Circle, Path } from "react-native-svg";
 
@@ -14,7 +14,7 @@ const Checkbox: React.FC<CheckboxProps> = props => {
   };
 
   return (
-    <View style={CONTAINER}>
+    <TouchableOpacity onPress={props.handlePress} style={CONTAINER}>
       <Svg
         width={props.size}
         height={props.size}
@@ -34,7 +34,7 @@ const Checkbox: React.FC<CheckboxProps> = props => {
           fill={style.checkMark}
         />
       </Svg>
-    </View>
+    </TouchableOpacity>
   );
 };
 
