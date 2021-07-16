@@ -1,6 +1,9 @@
-const todosReducerDefaultState = [];
+import { Todo } from "../../types";
+import { Action } from "../../actions/todos/types";
 
-export default (state = todosReducerDefaultState, action) => {
+const todosReducerDefaultState: Readonly<Todo[]> = [];
+
+export default (state = todosReducerDefaultState, action: Action) => {
   switch (action.type) {
     case "ADD_TODO":
       return [...state, action.payload.todo];

@@ -15,7 +15,7 @@ const TEXT: TextStyle = {
   letterSpacing: 1.5,
 };
 
-function SubHeading(props: SubHeadingProps) {
+const SubHeading: React.FC<SubHeadingProps> = props => {
   const { style } = props;
 
   return (
@@ -23,6 +23,6 @@ function SubHeading(props: SubHeadingProps) {
       <Text style={TEXT}>{props.text}</Text>
     </View>
   );
-}
+};
 
 export default SubHeading;

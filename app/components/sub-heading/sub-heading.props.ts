@@ -1,4 +1,4 @@
-import { StyleProp, ViewStyle } from "react-native";
+import { ViewStyle } from "react-native";
 
 export interface SubHeadingProps {
   /**
@@ -8,5 +8,5 @@ export interface SubHeadingProps {
   /**
    * Container style overrides
    */
-  style?: StyleProp<ViewStyle>;
+  style?: ViewStyle;
 }

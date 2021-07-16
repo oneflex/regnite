@@ -6,8 +6,8 @@ import Svg, { Circle, Path } from "react-native-svg";
 
 const CONTAINER: ViewStyle = {};
 
-function Checkbox(props: CheckboxProps) {
-  const style = {
+const Checkbox: React.FC<CheckboxProps> = props => {
+  const style: any = {
     background: props.isChecked ? "#D4DBFA" : color.transparent,
     border: props.isChecked ? "#D4DBFA" : "rgba(199, 78, 221, 1)",
     checkMark: props.isChecked ? "white" : color.transparent,
@@ -36,6 +36,6 @@ function Checkbox(props: CheckboxProps) {
       </Svg>
     </View>
   );
-}
+};
 
 export default Checkbox;

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { TodoProps } from "./todo.props";
+import { TodoProps } from "./todo-item.props";
 import { TextStyle, View, ViewStyle, Text } from "react-native";
 import { color, spacing, typography } from "../../theme";
 import Checkbox from "../checkbox/checkbox";
@@ -39,7 +39,7 @@ const DESCRIPTION_CROSSED: TextStyle = {
   opacity: 0.3,
 };
 
-function Todo(props: TodoProps) {
+const TodoItem: React.FC<TodoProps> = props => {
   const { style, description, isCompleted } = props;
 
   return (
@@ -52,6 +52,6 @@ function Todo(props: TodoProps) {
       </View>
     </View>
   );
-}
+};
 
-export default Todo;
+export default TodoItem;

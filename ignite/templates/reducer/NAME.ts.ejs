@@ -1,10 +1,13 @@
-const <%= props.camelCaseName %>ReducerDefaultState = [];
+import { <%= props.camelCaseName %> } from "../../types";
+import { action } from "../../actions/<%= props.camelCaseName %>/types";
 
-export default (state = <%= props.camelCaseName %>ReducerDefaultState, action) => {
+const <%= props.camelCaseName %>ReducerDefaultState: Readonly<<%= props.camelCaseName %>[]> = [];
+
+export default (state = <%= props.camelCaseName %>ReducerDefaultState, action : Action) => {
   switch (action.type) {
     case "ACTION_TYPE":
       
-    default:
+    default:`
       return state;
   }
 };

@@ -1,4 +1,4 @@
-import { StyleProp, ViewStyle } from "react-native";
+import { ViewStyle } from "react-native";
 
 export interface CheckboxProps {
   /**
@@ -12,5 +12,5 @@ export interface CheckboxProps {
   /**
    * Container style overrides
    */
-  style?: StyleProp<ViewStyle>;
+  style?: ViewStyle;
 }

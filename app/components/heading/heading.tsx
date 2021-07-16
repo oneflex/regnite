@@ -14,7 +14,7 @@ const TEXT: TextStyle = {
   fontWeight: "bold",
 };
 
-function Heading(props: HeadingProps) {
+const Heading: React.FC<HeadingProps> = props => {
   const { style } = props;
 
   return (
@@ -22,6 +22,6 @@ function Heading(props: HeadingProps) {
       <Text style={TEXT}>{props.text}</Text>
     </View>
   );
-}
+};
 
 export default Heading;

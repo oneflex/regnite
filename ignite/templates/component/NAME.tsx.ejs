@@ -10,7 +10,7 @@ const TEXT: TextStyle = {
   justifyContent: "center",
 };
 
-function <%= props.pascalCaseName %>(props: <%= props.pascalCaseName %>Props) {
+const <%= props.pascalCaseName %>: React.FC<<%= props.pascalCaseName %>Props> = props => {
   const { style } = props;
 
   return (
