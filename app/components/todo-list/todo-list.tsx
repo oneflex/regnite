@@ -4,6 +4,7 @@ import { TodoListProps } from "./todo-list.props";
 import { View, ViewStyle, FlatList } from "react-native";
 import TodoItem from "../todo-item/todo-item";
 import { Todo } from "../../types";
+import { filterTodos } from "../../selectors/todos";
 
 const CONTAINER: ViewStyle = {
   flexDirection: "row",
@@ -24,7 +25,7 @@ const TodoList: React.FC<TodoListProps> = props => {
 };
 
 const mapStateToProps = (state: any) => ({
-  todos: state.todos,
+  todos: filterTodos(state.todos, state.filters),
 });
 
 export default connect(mapStateToProps)(TodoList);
