@@ -8,7 +8,10 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { color, spacing, typography } from "../../theme";
+import { connect } from "react-redux";
 import Checkbox from "../checkbox/checkbox";
+import { removeTodo, updateTodo } from "../../actions/todos/todos";
+import todos from "../../reducers/todos/todos";
 
 const CONTAINER: ViewStyle = {
   flexDirection: "row",
@@ -24,8 +27,12 @@ const CONTAINER: ViewStyle = {
   },
   shadowOpacity: 0.09,
   shadowRadius: 2.65,
-
   elevation: 4,
+};
+
+const CHECKBOX: ViewStyle = {
+  justifyContent: "center",
+  alignItems: "center",
 };
 
 const DESCRIPTION_CONTAINER: ViewStyle = {
@@ -35,7 +42,7 @@ const DESCRIPTION_CONTAINER: ViewStyle = {
 
 const DESCRIPTION: TextStyle = {
   fontFamily: typography.primary,
-  fontSize: 20,
+  fontSize: 30,
   color: color.text,
 };
 
@@ -45,21 +52,51 @@ const DESCRIPTION_CROSSED: TextStyle = {
   opacity: 0.3,
 };
 
+const REMOVE_BUTTON: ViewStyle = {
+  marginLeft: "auto",
+};
+
+const REMOVE_BUTTON_TEXT: TextStyle = {
+  fontFamily: typography.primary,
+  fontSize: 30,
+  color: color.text,
+};
+
 const TodoItem: React.FC<TodoProps> = props => {
-  const { style, description, isCompleted } = props;
+  const { style, description, isCompleted, type, id } = props;
 
   return (
-    <TouchableOpacity onPress={() => console.log("pressed")}>
-      <View style={[CONTAINER, style]}>
-        <Checkbox isChecked={isCompleted} size={27} />
-        <View style={DESCRIPTION_CONTAINER}>
-          <Text style={isCompleted ? DESCRIPTION_CROSSED : DESCRIPTION}>
-            {description}
-          </Text>
-        </View>
+    <View style={[CONTAINER, style]}>
+      <View style={CHECKBOX}>
+        <Checkbox
+          isChecked={isCompleted}
+          size={27}
+          color={type === "personal" ? color.primary : color.secondaryPrimary}
+          handlePress={() => props.handleClickCheckbox(id, isCompleted)}
+        />
       </View>
-    </TouchableOpacity>
+      <View style={DESCRIPTION_CONTAINER}>
+        <Text style={isCompleted ? DESCRIPTION_CROSSED : DESCRIPTION}>
+          {description}
+        </Text>
+      </View>
+      <TouchableOpacity
+        style={REMOVE_BUTTON}
+        onPress={() => props.handleClickRemove(id)}
+      >
+        <Text style={REMOVE_BUTTON_TEXT}>🗑</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
-export default TodoItem;
+const mapDispatchToProps = (dispatch: any) => ({
+  handleClickCheckbox: (id: string, isCompleted: boolean) => {
+    dispatch(updateTodo(id, { isCompleted: !isCompleted }));
+  },
+  handleClickRemove: (id: string) => {
+    dispatch(removeTodo(id));
+  },
+});
+
+export default connect(undefined, mapDispatchToProps)(TodoItem);

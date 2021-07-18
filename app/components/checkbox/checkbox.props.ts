@@ -10,6 +10,14 @@ export interface CheckboxProps {
    */
   isChecked: boolean;
   /**
+   * Color for the unchecked checkbox
+   */
+  color: string;
+  /**
+   * A callback function to run when checkbox is pressed
+   */
+  handlePress: () => void;
+  /**
    * Container style overrides
    */
   style?: ViewStyle;
