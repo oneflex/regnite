@@ -5,3 +5,5 @@ export * from "./sub-heading/sub-heading";
 export * from "./todo-list/todo-list";
 export * from "./new-todo-form/new-todo-form"
 export * from "./submit-button/submit-button"
+export * from "./category-button/category-button"
+export * from "./sort-button/sort-button"

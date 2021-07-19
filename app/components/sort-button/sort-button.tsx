@@ -1,9 +1,9 @@
 import * as React from "react";
-import { SubmitButtonProps } from "./submit-button.props";
+import { SortButtonProps } from "./sort-button.props";
 import { TextStyle, TouchableOpacity, ViewStyle, Text } from "react-native";
 import { color, spacing } from "../../theme";
 
-const SUBMIT_BUTTON: ViewStyle = {
+const SORT_BUTTON: ViewStyle = {
   justifyContent: "center",
   alignItems: "center",
   backgroundColor: color.secondaryBackground,
@@ -11,36 +11,32 @@ const SUBMIT_BUTTON: ViewStyle = {
   marginLeft: spacing[3],
   paddingHorizontal: spacing[5],
   paddingVertical: spacing[5],
-  width: 40,
-  height: 40,
+  width: 140,
+  height: 30,
   borderRadius: 15,
   shadowColor: "#000",
   shadowOffset: {
-    width: 0,
+    width: 1,
     height: 2,
   },
-  shadowOpacity: 0.09,
+  shadowOpacity: 0.19,
   shadowRadius: 2.65,
   elevation: 4,
 };
 
-const SUBMIT_BUTTON_TEXT: TextStyle = {
+const SORT_BUTTON_TEXT: TextStyle = {
   fontSize: spacing[4],
   color: color.text,
+  textAlignVertical: "center",
 };
 
-const SubmitButton: React.FC<SubmitButtonProps> = props => {
-  const { style, disabled, handleClick, color } = props;
-
+const SortButton: React.FC<SortButtonProps> = props => {
+  const { text, handleClick } = props;
   return (
-    <TouchableOpacity
-      style={[SUBMIT_BUTTON, style]}
-      disabled={disabled}
-      onPress={handleClick}
-    >
-      <Text style={[SUBMIT_BUTTON_TEXT, { color }]}>+</Text>
+    <TouchableOpacity style={[SORT_BUTTON]} onPress={handleClick}>
+      <Text style={[SORT_BUTTON_TEXT]}>{text}</Text>
     </TouchableOpacity>
   );
 };
 
-export default SubmitButton;
+export default SortButton;
