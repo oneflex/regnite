@@ -2,6 +2,7 @@ import * as React from "react";
 import { CategoryButtonProps } from "./category-button.props";
 import { TextStyle, TouchableOpacity, ViewStyle, Text } from "react-native";
 import { color, spacing } from "../../theme";
+import { AnimatedCircularProgress } from "react-native-circular-progress";
 
 const CATEGORY_BUTTON: ViewStyle = {
   justifyContent: "center",
@@ -11,7 +12,7 @@ const CATEGORY_BUTTON: ViewStyle = {
   marginLeft: spacing[3],
   paddingHorizontal: spacing[5],
   paddingVertical: spacing[5],
-  width: 130,
+  width: 150,
   height: 80,
   borderRadius: 15,
   shadowColor: "#000",
@@ -38,6 +39,15 @@ const CategoryButton: React.FC<CategoryButtonProps> = props => {
       <Text style={[CATEGORY_BUTTON_TEXT, { color }]}>
         {text}-{todosNumber}
       </Text>
+      <AnimatedCircularProgress
+        size={30}
+        width={4}
+        padding={3}
+        fill={todosNumber}
+        tintColor={color}
+        onAnimationComplete={() => console.log("onAnimationComplete")}
+        backgroundColor="#3d5875"
+      />
     </TouchableOpacity>
   );
 };

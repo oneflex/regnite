@@ -72,6 +72,7 @@ const NewTodoForm: React.FC<NewTodoFormProps> = props => {
           color={color.primary}
           handleClick={() => handleCategoryTodo("personal")}
         />
+
         <CategoryButton
           text={"any"}
           todosNumber={personalNumber + workNumber}
