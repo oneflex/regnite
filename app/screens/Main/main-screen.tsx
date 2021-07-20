@@ -10,6 +10,7 @@ const FULL: ViewStyle = { flex: 1 };
 
 const CONTAINER: ViewStyle = {
   paddingHorizontal: spacing[6],
+  alignItems: "center",
 };
 
 export function MainScreen() {

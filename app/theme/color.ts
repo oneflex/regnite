@@ -41,4 +41,12 @@ export const color = {
    * Error messages and icons.
    */
   error: palette.angry,
+  /**
+   * Colors for categories
+   */
+  category: {
+    work: palette.pink,
+    personal: palette.lightBlue,
+    all: palette.grey,
+  },
 };
