@@ -42,7 +42,7 @@ const CategoryButton: React.FC<CategoryButtonProps> = props => {
   } = props;
 
   const calculateProgress = () => {
-    if (todosNumber == 0) {
+    if (todosNumber === 0) {
       return 100;
     }
     return (todosCompleted / todosNumber) * 100;
@@ -59,7 +59,6 @@ const CategoryButton: React.FC<CategoryButtonProps> = props => {
         padding={3}
         fill={calculateProgress()}
         tintColor={color}
-        onAnimationComplete={() => console.log("onAnimationComplete")}
         backgroundColor="#3d5875"
       />
     </TouchableOpacity>

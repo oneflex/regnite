@@ -11,5 +11,6 @@ module.exports = {
       },
     ],
     ["@babel/plugin-proposal-optional-catch-binding"],
+    ["module:react-native-dotenv"],
   ],
-}
+};

@@ -30,6 +30,7 @@ import { enableScreens } from "react-native-screens";
 import { color } from "./theme";
 import { Provider } from "react-redux";
 import configureStore from "./store/configureStore";
+import "./firebase/firebase";
 
 const store = configureStore();
 
