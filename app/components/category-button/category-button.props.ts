@@ -9,11 +9,15 @@ export interface CategoryButtonProps {
    * numbers of todos by category
    */
   todosNumber: number;
-  /**NP
+  /**
+   * numbers of todos that are completed by category
+   */
+  todosCompleted: number;
+  /**
    * Color for the text
    */
   color: string;
-  /**NP
+  /**
    * text
    */
   text: string;

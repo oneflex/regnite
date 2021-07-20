@@ -16,8 +16,16 @@ export interface NewTodoFormProps {
    */
   updateSortBy: (type: Sort) => void;
   /**
+   * contains the counters of every todo by category
+   */
+  todosCount: {
+    [type in Category]: {
+      total: number;
+      completed: number;
+    };
+  };
+  /**
    * Container style overrides
    */
-
   style?: ViewStyle;
 }

@@ -12,7 +12,7 @@ const CATEGORY_BUTTON: ViewStyle = {
   marginLeft: spacing[3],
   paddingHorizontal: spacing[5],
   paddingVertical: spacing[5],
-  width: 150,
+  width: 130,
   height: 80,
   borderRadius: 15,
   shadowColor: "#000",
@@ -32,7 +32,21 @@ const CATEGORY_BUTTON_TEXT: TextStyle = {
 };
 
 const CategoryButton: React.FC<CategoryButtonProps> = props => {
-  const { style, handleClick, color, todosNumber, text } = props;
+  const {
+    style,
+    handleClick,
+    color,
+    todosNumber,
+    todosCompleted,
+    text,
+  } = props;
+
+  const calculateProgress = () => {
+    if (todosNumber == 0) {
+      return 100;
+    }
+    return (todosCompleted / todosNumber) * 100;
+  };
 
   return (
     <TouchableOpacity style={[CATEGORY_BUTTON, style]} onPress={handleClick}>
@@ -43,7 +57,7 @@ const CategoryButton: React.FC<CategoryButtonProps> = props => {
         size={30}
         width={4}
         padding={3}
-        fill={todosNumber}
+        fill={calculateProgress()}
         tintColor={color}
         onAnimationComplete={() => console.log("onAnimationComplete")}
         backgroundColor="#3d5875"
