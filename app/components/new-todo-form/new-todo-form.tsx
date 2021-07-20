@@ -39,6 +39,7 @@ const INPUT: ViewStyle = {
 };
 
 const NewTodoForm: React.FC<NewTodoFormProps> = props => {
+  const { style } = props;
   const [description, setDescription] = useState<string>("");
 
   function handleSubmitTodo(type: "work" | "personal") {
@@ -51,11 +52,12 @@ const NewTodoForm: React.FC<NewTodoFormProps> = props => {
   }
 
   return (
-    <View style={[CONTAINER]}>
+    <View style={[CONTAINER, style]}>
       <View style={FORM}>
         {["personal", "all", "work"].map((type: Category) => {
           return (
             <CategoryButton
+              key={type}
               text={type}
               todosCompleted={props.todosCount[type].completed}
               todosNumber={props.todosCount[type].total}
