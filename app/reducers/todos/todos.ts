@@ -1,13 +1,14 @@
 import { Todo } from "../../types";
 import { Action } from "../../actions/todos/types";
-import { v4 as uuid } from "uuid";
 
 const todosReducerDefaultState: Readonly<Todo[]> = [];
 
 export default (state = todosReducerDefaultState, action: Action) => {
   switch (action.type) {
+    case "SET_TODOS":
+      return [...action.payload.todos];
     case "ADD_TODO":
-      return [...state, { id: uuid(), ...action.payload.todo }];
+      return [...state, { ...action.payload.todo }];
     case "REMOVE_TODO":
       return state.filter(({ id }) => id !== action.payload.id);
     case "UPDATE_TODO": {

@@ -10,7 +10,7 @@ import {
 import { color, spacing, typography } from "../../theme";
 import { connect } from "react-redux";
 import Checkbox from "../checkbox/checkbox";
-import { removeTodo, updateTodo } from "../../actions/todos/todos";
+import { startRemoveTodo, startUpdateTodo } from "../../actions/todos/todos";
 import todos from "../../reducers/todos/todos";
 
 const CONTAINER: ViewStyle = {
@@ -92,10 +92,10 @@ const TodoItem: React.FC<TodoProps> = props => {
 
 const mapDispatchToProps = (dispatch: any) => ({
   handleClickCheckbox: (id: string, isCompleted: boolean) => {
-    dispatch(updateTodo(id, { isCompleted: !isCompleted }));
+    dispatch(startUpdateTodo(id, { isCompleted: !isCompleted }));
   },
   handleClickRemove: (id: string) => {
-    dispatch(removeTodo(id));
+    dispatch(startRemoveTodo(id));
   },
 });
 

@@ -5,7 +5,7 @@ import SubHeading from "../sub-heading/sub-heading";
 import { useState } from "react";
 import { color, spacing } from "../../theme";
 import { connect } from "react-redux";
-import { addTodo } from "../../actions/todos/todos";
+import { startAddTodo } from "../../actions/todos/todos";
 import { updateFilterBy, updateSortBy } from "../../actions/filters/filters";
 import { TodoData } from "../../actions/todos/types";
 import SubmitButton from "../submit-button/submit-button";
@@ -118,7 +118,7 @@ const mapStateToProps = (state: any) => {
 };
 
 const mapDispatchToProps = (dispatch: any) => ({
-  addTodo: (todo: TodoData) => dispatch(addTodo(todo)),
+  addTodo: (todo: TodoData) => dispatch(startAddTodo(todo)),
   updateFilterBy: (type: Category) => dispatch(updateFilterBy(type)),
   updateSortBy: (type: Sort) => dispatch(updateSortBy(type)),
 });

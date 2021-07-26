@@ -12,8 +12,6 @@ import {
   FIREBASE_MEASUREMENT_ID,
 } from "@env";
 
-console.log(FIREBASE_DATABASE_URL);
-
 const config = {
   apiKey: FIREBASE_API_KEY,
   authDomain: FIREBASE_AUTH_DOMAIN,
@@ -27,4 +25,4 @@ const config = {
 
 firebase.initializeApp(config);
 
-const database = firebase.database();
+export default firebase.database();

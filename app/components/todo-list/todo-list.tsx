@@ -1,10 +1,11 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { TodoListProps } from "./todo-list.props";
-import { View, ViewStyle, FlatList } from "react-native";
+import { View, ViewStyle, FlatList, ActivityIndicator } from "react-native";
 import TodoItem from "../todo-item/todo-item";
 import { Todo } from "../../types";
 import { filterTodos } from "../../selectors/todos";
+import { startSetTodos } from "../../actions/todos/todos";
 
 const CONTAINER: ViewStyle = {
   flexDirection: "row",
@@ -12,6 +13,14 @@ const CONTAINER: ViewStyle = {
 
 const TodoList: React.FC<TodoListProps> = props => {
   const { style } = props;
+
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    props.setTodos().then(() => setIsLoading(false));
+  }, []);
+
+  if (isLoading) return <ActivityIndicator />;
 
   return (
     <View style={[CONTAINER, style]}>
@@ -24,8 +33,12 @@ const TodoList: React.FC<TodoListProps> = props => {
   );
 };
 
+const mapDispatchToProps = (dispatch: any) => ({
+  setTodos: () => dispatch(startSetTodos()),
+});
+
 const mapStateToProps = (state: any) => ({
   todos: filterTodos(state.todos, state.filters),
 });
 
-export default connect(mapStateToProps)(TodoList);
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
