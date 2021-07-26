@@ -39,6 +39,7 @@
     "react-redux": "^7.2.4",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0",
+    "redux-undo": "^1.0.1",
     "uninstall": "0.0.0"
   },
   "devDependencies": {

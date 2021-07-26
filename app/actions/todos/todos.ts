@@ -33,8 +33,8 @@ export const removeTodo = (id: string): Action => ({
 
 export const startRemoveTodo = (id: string) => {
   return async (dispatch: any) => {
-    await API.todos.remove(id);
     dispatch(removeTodo(id));
+    await API.todos.remove(id);
   };
 };
 
@@ -48,7 +48,7 @@ export const updateTodo = (id: string, updates: Updates): Action => ({
 
 export const startUpdateTodo = (id: string, updates: Updates) => {
   return async (dispatch: any) => {
-    await API.todos.update(id, updates);
     dispatch(updateTodo(id, updates));
+    await API.todos.update(id, updates);
   };
 };
