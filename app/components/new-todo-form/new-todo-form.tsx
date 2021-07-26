@@ -1,6 +1,6 @@
 import * as React from "react";
 import { NewTodoFormProps } from "./new-todo-form.props";
-import { View, ViewStyle, TextInput } from "react-native";
+import { View, ViewStyle, TextInput, TextStyle } from "react-native";
 import SubHeading from "../sub-heading/sub-heading";
 import { useState } from "react";
 import { color, spacing } from "../../theme";
@@ -9,20 +9,22 @@ import { startAddTodo } from "../../actions/todos/todos";
 import { TodoData } from "../../actions/todos/types";
 import SubmitButton from "../submit-button/submit-button";
 
-const CONTAINER: ViewStyle = {};
+const CONTAINER: ViewStyle = {
+  paddingHorizontal: spacing[5],
+};
 
 const ADD_TODO_FORM: ViewStyle = {
   flexDirection: "row",
-  paddingVertical: spacing[3],
+  paddingBottom: spacing[3],
 };
 
-const INPUT: ViewStyle = {
+const INPUT: TextStyle = {
+  flex: 1,
   backgroundColor: color.secondaryBackground,
-  height: 40,
-  width: 260,
-  paddingHorizontal: spacing[5],
-  paddingVertical: spacing[5],
+  fontSize: spacing[5],
   marginVertical: spacing[1],
+  paddingHorizontal: spacing[3],
+  height: 50,
   borderRadius: 15,
   shadowColor: "#000",
   shadowOffset: {

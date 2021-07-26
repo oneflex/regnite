@@ -7,7 +7,6 @@ import CategoryButton from "../category-button/category-button";
 import SortButton from "../sort-button/sort-button";
 import { connect } from "react-redux";
 import { updateFilterBy, updateSortBy } from "../../actions/filters/filters";
-import { Todo } from "../../types";
 import { calculateTodosCount } from "../../selectors/todos";
 
 const CONTAINER: ViewStyle = {};
@@ -23,6 +22,7 @@ const TODO_TYPES: ViewStyle = {
 const SORT_OPTIONS: ViewStyle = {
   flexDirection: "row",
   paddingVertical: spacing[3],
+  paddingHorizontal: spacing[5],
 };
 
 const FiltersForm: React.FC<FiltersFormProps> = props => {
@@ -52,11 +52,11 @@ const FiltersForm: React.FC<FiltersFormProps> = props => {
       />
       <View style={SORT_OPTIONS}>
         <SortButton
-          text={"sort by a-z"}
+          text={"Sort by a-z"}
           handleClick={() => props.updateSortBy("nameAsc")}
         />
         <SortButton
-          text={"sort by z-a"}
+          text={"Sort by z-a"}
           handleClick={() => props.updateSortBy("nameDes")}
         />
       </View>
