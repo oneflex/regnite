@@ -1,11 +1,11 @@
 import * as React from "react";
 import { HeadingProps } from "./Heading.props";
 import { TextStyle, View, ViewStyle, Text } from "react-native";
-import { color } from "../../theme";
+import { color, spacing } from "../../theme";
 
 const CONTAINER: ViewStyle = {
   flexDirection: "row",
-  paddingVertical: 25,
+  padding: spacing[5],
 };
 
 const TEXT: TextStyle = {
