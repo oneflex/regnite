@@ -81,4 +81,5 @@ web-build/
 # Configurations
 app/config/env.*.js
 !env.js
-.env
+.env.development
+.env.production
