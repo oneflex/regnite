@@ -11,6 +11,6 @@ export interface Updates {
 }
 
 export interface Action {
-  type: "ADD_TODO" | "REMOVE_TODO" | "UPDATE_TODO";
+  type: "ADD_TODO" | "REMOVE_TODO" | "UPDATE_TODO" | "SET_TODOS";
   payload?: any;
 }

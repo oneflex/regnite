@@ -10,14 +10,13 @@ import {
 import { color, spacing, typography } from "../../theme";
 import { connect } from "react-redux";
 import Checkbox from "../checkbox/checkbox";
-import { removeTodo, updateTodo } from "../../actions/todos/todos";
-import todos from "../../reducers/todos/todos";
+import { startRemoveTodo, startUpdateTodo } from "../../actions/todos/todos";
 
 const CONTAINER: ViewStyle = {
   flexDirection: "row",
-  paddingHorizontal: spacing[5],
-  paddingVertical: spacing[5],
+  padding: spacing[5],
   marginVertical: spacing[1],
+  marginHorizontal: spacing[5],
   backgroundColor: color.secondaryBackground,
   borderRadius: 15,
   shadowColor: "#000",
@@ -41,7 +40,7 @@ const DESCRIPTION_CONTAINER: ViewStyle = {
 };
 
 const DESCRIPTION: TextStyle = {
-  fontFamily: typography.primary,
+  fontFamily: typography.primary.regular,
   fontSize: 30,
   color: color.text,
 };
@@ -57,7 +56,7 @@ const REMOVE_BUTTON: ViewStyle = {
 };
 
 const REMOVE_BUTTON_TEXT: TextStyle = {
-  fontFamily: typography.primary,
+  fontFamily: typography.primary.regular,
   fontSize: 30,
   color: color.text,
 };
@@ -92,10 +91,10 @@ const TodoItem: React.FC<TodoProps> = props => {
 
 const mapDispatchToProps = (dispatch: any) => ({
   handleClickCheckbox: (id: string, isCompleted: boolean) => {
-    dispatch(updateTodo(id, { isCompleted: !isCompleted }));
+    dispatch(startUpdateTodo(id, { isCompleted: !isCompleted }));
   },
   handleClickRemove: (id: string) => {
-    dispatch(removeTodo(id));
+    dispatch(startRemoveTodo(id));
   },
 });
 

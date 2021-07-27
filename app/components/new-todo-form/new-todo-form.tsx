@@ -1,32 +1,30 @@
 import * as React from "react";
 import { NewTodoFormProps } from "./new-todo-form.props";
-import { View, ViewStyle, TextInput } from "react-native";
+import { View, ViewStyle, TextInput, TextStyle } from "react-native";
 import SubHeading from "../sub-heading/sub-heading";
 import { useState } from "react";
 import { color, spacing } from "../../theme";
 import { connect } from "react-redux";
-import { addTodo } from "../../actions/todos/todos";
-import { updateFilterBy, updateSortBy } from "../../actions/filters/filters";
+import { startAddTodo } from "../../actions/todos/todos";
 import { TodoData } from "../../actions/todos/types";
 import SubmitButton from "../submit-button/submit-button";
-import { Category, Sort } from "../../types/filters";
-import CategoryButton from "../category-button/category-button";
-import SortButton from "../sort-button/sort-button";
-import { Todo } from "../../types";
 
-const CONTAINER: ViewStyle = { alignItems: "center" };
-
-const FORM: ViewStyle = {
-  flexDirection: "row",
+const CONTAINER: ViewStyle = {
+  paddingHorizontal: spacing[5],
 };
 
-const INPUT: ViewStyle = {
+const ADD_TODO_FORM: ViewStyle = {
+  flexDirection: "row",
+  paddingBottom: spacing[3],
+};
+
+const INPUT: TextStyle = {
+  flex: 1,
   backgroundColor: color.secondaryBackground,
-  height: 40,
-  width: 260,
-  paddingHorizontal: spacing[5],
-  paddingVertical: spacing[5],
+  fontSize: spacing[5],
   marginVertical: spacing[1],
+  paddingHorizontal: spacing[3],
+  height: 50,
   borderRadius: 15,
   shadowColor: "#000",
   shadowOffset: {
@@ -39,7 +37,6 @@ const INPUT: ViewStyle = {
 };
 
 const NewTodoForm: React.FC<NewTodoFormProps> = props => {
-  const { style } = props;
   const [description, setDescription] = useState<string>("");
 
   function handleSubmitTodo(type: "work" | "personal") {
@@ -52,33 +49,9 @@ const NewTodoForm: React.FC<NewTodoFormProps> = props => {
   }
 
   return (
-    <View style={[CONTAINER, style]}>
-      <View style={FORM}>
-        {["personal", "all", "work"].map((type: Category) => {
-          return (
-            <CategoryButton
-              key={type}
-              text={type}
-              todosCompleted={props.todosCount[type].completed}
-              todosNumber={props.todosCount[type].total}
-              color={color.category[type]}
-              handleClick={() => props.updateFilterBy(type)}
-            />
-          );
-        })}
-      </View>
-      <View style={FORM}>
-        <SortButton
-          text={"sort by a-z"}
-          handleClick={() => props.updateSortBy("nameAsc")}
-        />
-        <SortButton
-          text={"sort by z-a"}
-          handleClick={() => props.updateSortBy("nameDes")}
-        />
-      </View>
+    <View style={[CONTAINER, props.style]}>
       <SubHeading text="ADD NEW TASK" />
-      <View style={FORM}>
+      <View style={ADD_TODO_FORM}>
         <TextInput
           style={INPUT}
           value={description}
@@ -99,28 +72,8 @@ const NewTodoForm: React.FC<NewTodoFormProps> = props => {
   );
 };
 
-const mapStateToProps = (state: any) => {
-  const todosCount: any = {};
-  ["all", "personal", "work"].forEach(type => {
-    todosCount[type] = {};
-    todosCount[type].total = state.todos.filter(
-      (todo: Todo) => todo.type === type || type === "all",
-    ).length;
-    todosCount[type].completed = state.todos.filter(
-      (todo: Todo) =>
-        (todo.type === type || type === "all") && todo.isCompleted,
-    ).length;
-  });
-
-  return {
-    todosCount,
-  };
-};
-
 const mapDispatchToProps = (dispatch: any) => ({
-  addTodo: (todo: TodoData) => dispatch(addTodo(todo)),
-  updateFilterBy: (type: Category) => dispatch(updateFilterBy(type)),
-  updateSortBy: (type: Sort) => dispatch(updateSortBy(type)),
+  addTodo: (todo: TodoData) => dispatch(startAddTodo(todo)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewTodoForm);
+export default connect(undefined, mapDispatchToProps)(NewTodoForm);

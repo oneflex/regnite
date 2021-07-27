@@ -1,4 +1,4 @@
-import { Platform } from "react-native"
+import { Platform } from "react-native";
 
 /**
  * You can find a list of available fonts on both iOS and Android here:
@@ -17,15 +17,19 @@ export const typography = {
   /**
    * The primary font.  Used in most places.
    */
-  primary: Platform.select({ ios: "Helvetica", android: "normal" }),
-
+  primary: {
+    bold: Platform.select({ ios: "Nunito-Bold", android: "Nunito-Bold" }),
+    regular: Platform.select({
+      ios: "Nunito-Regular",
+      android: "Nunito-Regular",
+    }),
+  },
   /**
    * An alternate font used for perhaps titles and stuff.
    */
   secondary: Platform.select({ ios: "Arial", android: "sans-serif" }),
-
   /**
    * Lets get fancy with a monospace font!
    */
   code: Platform.select({ ios: "Courier", android: "monospace" }),
-}
+};

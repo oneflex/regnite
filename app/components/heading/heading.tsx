@@ -1,14 +1,16 @@
 import * as React from "react";
 import { HeadingProps } from "./Heading.props";
 import { TextStyle, View, ViewStyle, Text } from "react-native";
-import { color } from "../../theme";
+import { color, spacing, typography } from "../../theme";
 
 const CONTAINER: ViewStyle = {
   flexDirection: "row",
-  paddingVertical: 25,
+  paddingVertical: spacing[4],
+  paddingHorizontal: spacing[5],
 };
 
 const TEXT: TextStyle = {
+  fontFamily: typography.primary.bold,
   fontSize: 35,
   color: color.text,
   fontWeight: "bold",

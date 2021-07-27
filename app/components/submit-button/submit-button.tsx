@@ -9,10 +9,8 @@ const SUBMIT_BUTTON: ViewStyle = {
   backgroundColor: color.secondaryBackground,
   marginVertical: spacing[1],
   marginLeft: spacing[3],
-  paddingHorizontal: spacing[5],
-  paddingVertical: spacing[5],
-  width: 40,
-  height: 40,
+  width: 50,
+  height: 50,
   borderRadius: 15,
   shadowColor: "#000",
   shadowOffset: {

@@ -8,10 +8,9 @@ const CATEGORY_BUTTON: ViewStyle = {
   justifyContent: "center",
   alignItems: "center",
   backgroundColor: color.secondaryBackground,
-  marginVertical: spacing[1],
-  marginLeft: spacing[3],
-  paddingHorizontal: spacing[5],
-  paddingVertical: spacing[5],
+  marginVertical: spacing[2],
+  marginRight: spacing[3],
+  padding: spacing[5],
   width: 130,
   height: 80,
   borderRadius: 15,
@@ -42,7 +41,7 @@ const CategoryButton: React.FC<CategoryButtonProps> = props => {
   } = props;
 
   const calculateProgress = () => {
-    if (todosNumber == 0) {
+    if (todosNumber === 0) {
       return 100;
     }
     return (todosCompleted / todosNumber) * 100;
@@ -59,7 +58,6 @@ const CategoryButton: React.FC<CategoryButtonProps> = props => {
         padding={3}
         fill={calculateProgress()}
         tintColor={color}
-        onAnimationComplete={() => console.log("onAnimationComplete")}
         backgroundColor="#3d5875"
       />
     </TouchableOpacity>
