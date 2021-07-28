@@ -9,7 +9,7 @@ const FULL: ViewStyle = { flex: 1 };
 
 const CONTAINER: ViewStyle = { flex: 1 };
 
-export function MainScreen() {
+function HomeScreen() {
   return (
     <View style={FULL}>
       <View style={CONTAINER}>
@@ -21,3 +21,5 @@ export function MainScreen() {
     </View>
   );
 }
+
+export default HomeScreen;

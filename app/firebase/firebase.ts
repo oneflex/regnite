@@ -23,6 +23,12 @@ const config = {
   measurementId: FIREBASE_MEASUREMENT_ID,
 };
 
-firebase.initializeApp(config);
+if (!firebase.apps.length) {
+  firebase.initializeApp(config);
+}
 
-export default firebase.database();
+const database = firebase.database();
+
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+
+export { firebase, database, googleAuthProvider };

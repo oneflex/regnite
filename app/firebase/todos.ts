@@ -1,6 +1,6 @@
 import { TodoData, Updates } from "../actions/todos/types";
 import { Todo } from "../types";
-import database from "./firebase";
+import { database } from "./firebase";
 
 async function create(todo: TodoData) {
   const ref = await database.ref(`todos`).push(todo);

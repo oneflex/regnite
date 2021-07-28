@@ -20,7 +20,6 @@ import { enableScreens } from "react-native-screens";
 import { color } from "./theme";
 import { Provider } from "react-redux";
 import configureStore from "./store/configureStore";
-import "./firebase/firebase";
 import fonts from "./theme/fonts";
 
 const store = configureStore();
