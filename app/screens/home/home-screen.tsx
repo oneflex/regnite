@@ -4,20 +4,21 @@ import TodoList from "../../components/todo-list/todo-list";
 import Heading from "../../components/heading/heading";
 import NewTodoForm from "../../components/new-todo-form/new-todo-form";
 import FiltersForm from "../../components/filters-form/filters-form";
-
-const FULL: ViewStyle = { flex: 1 };
+import Screen from "../../components/screen/screen";
 
 const CONTAINER: ViewStyle = { flex: 1 };
 
-export function MainScreen() {
+function HomeScreen() {
   return (
-    <View style={FULL}>
+    <Screen>
       <View style={CONTAINER}>
         <Heading text="What's up, Joy!" />
         <FiltersForm />
         <NewTodoForm />
         <TodoList />
       </View>
-    </View>
+    </Screen>
   );
 }
+
+export default HomeScreen;

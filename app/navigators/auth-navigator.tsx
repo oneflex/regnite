@@ -1,23 +1,33 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { HomeScreen } from "../screens";
+import {
+  WelcomeScreen,
+  SignInWithEmailScreen,
+  SignUpWithEmailScreen,
+} from "../screens";
+import { color } from "../theme";
+import Header from "../components/header/header";
 
 export type PrimaryParamList = {
-  home: undefined;
+  Welcome: undefined;
+  SignInWithEmail: undefined;
+  SignUpWithEmail: undefined;
 };
 
 const Stack = createStackNavigator<PrimaryParamList>();
 
-export function MainNavigator() {
+export function AuthNavigator() {
   return (
     <Stack.Navigator
       screenOptions={{
-        cardStyle: { backgroundColor: "transparent" },
+        cardStyle: { backgroundColor: color.background },
         headerShown: false,
       }}
-      initialRouteName="home"
+      initialRouteName="Welcome"
     >
-      <Stack.Screen name="home" component={HomeScreen} />
+      <Stack.Screen name="Welcome" component={WelcomeScreen} />
+      <Stack.Screen name="SignInWithEmail" component={SignInWithEmailScreen} />
+      <Stack.Screen name="SignUpWithEmail" component={SignUpWithEmailScreen} />
     </Stack.Navigator>
   );
 }
@@ -31,5 +41,5 @@ export function MainNavigator() {
  *
  * `canExit` is used in ./app/app.tsx in the `useBackButtonHandler` hook.
  */
-const exitRoutes = ["main"];
+const exitRoutes = ["signIn"];
 export const canExit = (routeName: string) => exitRoutes.includes(routeName);
