@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Button,
   View,
   ViewStyle,
   Text,
@@ -11,10 +10,7 @@ import Heading from "../../components/heading/heading";
 import InputBox from "../../components/input-box/input-box";
 import { color, spacing } from "../../theme";
 import Screen from "../../components/screen/screen";
-
-const SUBMIT_BUTTON: ViewStyle = {
-  paddingVertical: spacing[5],
-};
+import Button from "../../components/button/button";
 
 const SIGN_UP_MESSAGE: ViewStyle = {
   justifyContent: "center",
@@ -54,9 +50,7 @@ function SignInWithEmailScreen(props: any) {
         textContentType="password"
         secureTextEntry
       />
-      <View style={SUBMIT_BUTTON}>
-        <Button title="Sign In" onPress={() => 1}></Button>
-      </View>
+      <Button title="Sign In" onPress={() => 1}></Button>
       <View style={SIGN_UP_MESSAGE}>
         <Text style={SIGN_UP_TEXT}>Don't have an account?</Text>
         <TouchableOpacity

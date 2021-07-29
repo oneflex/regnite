@@ -1,14 +1,10 @@
 import React from "react";
-import { View, ViewStyle, Button } from "react-native";
+import { View, ViewStyle } from "react-native";
 import { connect } from "react-redux";
 import { startSignIn } from "../../actions/auth/auth";
 import Heading from "../../components/heading/heading";
-import { spacing } from "../../theme";
 import Screen from "../../components/screen/screen";
-
-const BUTTON: ViewStyle = {
-  paddingVertical: spacing[3],
-};
+import Button from "../../components/button/button";
 
 const BUTTONS: ViewStyle = {
   alignItems: "center",
@@ -19,21 +15,13 @@ function WelcomeScreen(props: any) {
     <Screen>
       <Heading text="Welcome!"></Heading>
       <View style={BUTTONS}>
-        <View style={BUTTON}>
-          <Button
-            title="Email and password"
-            onPress={() => props.navigation.push("SignInWithEmail")}
-          ></Button>
-        </View>
-        <View style={BUTTON}>
-          <Button title="Gmail" onPress={() => props.signIn()}></Button>
-        </View>
-        <View style={BUTTON}>
-          <Button title="Facebook" onPress={() => props.signIn()}></Button>
-        </View>
-        <View style={BUTTON}>
-          <Button title="Apple" onPress={() => props.signIn()}></Button>
-        </View>
+        <Button
+          title="Email and password"
+          onPress={() => props.navigation.push("SignInWithEmail")}
+        ></Button>
+        <Button title="Gmail" onPress={() => props.signIn()}></Button>
+        <Button title="Facebook" onPress={() => props.signIn()}></Button>
+        <Button title="Apple" onPress={() => props.signIn()}></Button>
       </View>
     </Screen>
   );
