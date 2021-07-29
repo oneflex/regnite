@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "igniteTodo",
-    "slug": "igniteTodo",
+    "name": "regnite-todo",
+    "slug": "regnite-todo",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
