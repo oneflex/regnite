@@ -37,7 +37,7 @@ function SignUpWithEmailScreen() {
           !!credentialsFields.password.value &&
           !credentialsFields.password.isValid
         }
-        errorMessage="Invalid Password"
+        errorMessage="Password must be at least 6 character long, with one upper case letter and one number"
       />
       <Button
         title="Sign Up"
