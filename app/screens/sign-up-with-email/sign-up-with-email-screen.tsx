@@ -29,15 +29,6 @@ function SignUpWithEmailScreen() {
         textContentType="password"
         secureTextEntry
       />
-      <InputBox
-        value={password}
-        onChangeText={setPassword}
-        label="CONFIRM PASSWORD"
-        placeholder="Confirm password"
-        autoCompleteType="password"
-        textContentType="password"
-        secureTextEntry
-      />
       <Button title="Sign Up" onPress={() => 1} />
     </Screen>
   );
