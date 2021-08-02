@@ -10,7 +10,14 @@ import Heading from "../../components/heading/heading";
 import InputBox from "../../components/input-box/input-box";
 import { color, spacing } from "../../theme";
 import Screen from "../../components/screen/screen";
-import Button from "../../components/button/button";
+import LoadingButton from "../../components/loading-button/loading-button";
+import { startSignIn } from "../../actions/auth/auth";
+import { connect } from "react-redux";
+
+const LOADING_BUTTON: ViewStyle = {
+  paddingVertical: spacing[4],
+  paddingHorizontal: spacing[6],
+};
 
 const SIGN_UP_MESSAGE: ViewStyle = {
   justifyContent: "center",
@@ -50,7 +57,14 @@ function SignInWithEmailScreen(props: any) {
         textContentType="password"
         secureTextEntry
       />
-      <Button title="Sign In" onPress={() => 1}></Button>
+      <LoadingButton
+        style={LOADING_BUTTON}
+        isLoading={props.isLoading}
+        error={props.error}
+        title="Sign In"
+        onPress={() => props.signIn(email, password)}
+        disabled={!email || !password}
+      />
       <View style={SIGN_UP_MESSAGE}>
         <Text style={SIGN_UP_TEXT}>Don't have an account?</Text>
         <TouchableOpacity
@@ -63,4 +77,17 @@ function SignInWithEmailScreen(props: any) {
   );
 }
 
-export default SignInWithEmailScreen;
+const mapDispatchToProps = (dispatch: any) => ({
+  signIn: (email: string, password: string) =>
+    dispatch(startSignIn(email, password)),
+});
+
+const mapStateToProps = (state: any) => ({
+  isLoading: state.auth.status === "loading",
+  error: state.auth.error,
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(SignInWithEmailScreen);

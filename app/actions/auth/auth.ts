@@ -23,11 +23,26 @@ export const signIn = (uid: string) => ({
   },
 });
 
-// export const startSignIn = () => {
-//   return () => {
-//     return firebase.auth().signInWithPopup(googleAuthProvider);
-//   };
-// };
+export const startSignIn = (email: string, password: string) => {
+  return async (dispatch: any) => {
+    dispatch(updateStatus("loading"));
+
+    const [error, userCredential] = await to(
+      firebase.auth().signInWithEmailAndPassword(email, password),
+    );
+
+    if (error) {
+      dispatch(updateStatus("failed"));
+      dispatch(updateError(error.message));
+      return;
+    }
+
+    dispatch(updateStatus("succeeded"));
+    dispatch(updateError(null));
+    dispatch(signIn(userCredential.user.uid));
+    dispatch(updateStatus("idle"));
+  };
+};
 
 export const startSignUp = (email: string, password: string) => {
   return async (dispatch: any) => {
