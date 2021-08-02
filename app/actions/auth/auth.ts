@@ -1,4 +1,20 @@
-import { firebase, googleAuthProvider } from "../../firebase/firebase";
+import { firebase } from "../../firebase/firebase";
+import { to } from "../../utils/to";
+import { Status, Error } from "../../types/auth";
+
+export const updateStatus = (status: Status) => ({
+  type: "UPDATE_STATUS",
+  payload: {
+    status,
+  },
+});
+
+export const updateError = (error: Error) => ({
+  type: "UPDATE_ERROR",
+  payload: {
+    error,
+  },
+});
 
 export const signIn = (uid: string) => ({
   type: "SIGN_IN",
@@ -7,9 +23,30 @@ export const signIn = (uid: string) => ({
   },
 });
 
-export const startSignIn = () => {
-  return () => {
-    return firebase.auth().signInWithPopup(googleAuthProvider);
+// export const startSignIn = () => {
+//   return () => {
+//     return firebase.auth().signInWithPopup(googleAuthProvider);
+//   };
+// };
+
+export const startSignUp = (email: string, password: string) => {
+  return async (dispatch: any) => {
+    dispatch(updateStatus("loading"));
+
+    const [error, userCredential] = await to(
+      firebase.auth().createUserWithEmailAndPassword(email, password),
+    );
+
+    if (error) {
+      dispatch(updateStatus("failed"));
+      dispatch(updateError(error.message));
+      return;
+    }
+
+    dispatch(updateStatus("succeeded"));
+    dispatch(updateError(null));
+    dispatch(signIn(userCredential.user.uid));
+    dispatch(updateStatus("idle"));
   };
 };
 

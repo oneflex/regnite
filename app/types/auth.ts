@@ -1,3 +1,9 @@
+export type UID = string | undefined;
+export type Status = "idle" | "loading" | "succeeded" | "failed";
+export type Error = string | null;
+
 export interface Auth {
-  uid?: string;
+  uid: UID;
+  status: Status;
+  error: Error;
 }
