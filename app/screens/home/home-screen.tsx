@@ -32,7 +32,7 @@ function HomeScreen(props: any) {
         <TouchableOpacity style={LOGOUT_BUTTON} onPress={() => props.signOut()}>
           <Text style={LOGOUT_BUTTON_TEXT}>{"👋🏻"}</Text>
         </TouchableOpacity>
-        <Heading text="What's up, Joy!" />
+        <Heading text={`What's up, ${props.name}!`} />
         <FiltersForm />
         <NewTodoForm />
         <TodoList />
@@ -45,4 +45,8 @@ const mapDispatchToProps = (dispatch: any) => ({
   signOut: () => dispatch(signOut()),
 });
 
-export default connect(undefined, mapDispatchToProps)(HomeScreen);
+const mapStateToProps = (state: any) => ({
+  name: state.auth.user && state.auth.user.email.split("@")[0],
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);

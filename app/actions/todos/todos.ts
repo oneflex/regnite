@@ -8,8 +8,9 @@ const setTodos = (todos: Array<Todo>): Action => ({
 });
 
 export const startSetTodos = () => {
-  return async (dispatch: any) => {
-    const todos = await API.todos.read();
+  return async (dispatch: any, getState: any) => {
+    const { uid } = getState().auth.user;
+    const todos = await API.todos.read(uid);
     dispatch(setTodos(todos));
   };
 };
@@ -20,8 +21,9 @@ const addTodo = (todo: Todo): Action => ({
 });
 
 export const startAddTodo = (todoData: TodoData) => {
-  return async (dispatch: any) => {
-    const id = await API.todos.create(todoData);
+  return async (dispatch: any, getState: any) => {
+    const { uid } = getState().auth.user;
+    const id = await API.todos.create(uid, todoData);
     dispatch(addTodo({ id, ...todoData }));
   };
 };
@@ -32,9 +34,10 @@ export const removeTodo = (id: string): Action => ({
 });
 
 export const startRemoveTodo = (id: string) => {
-  return async (dispatch: any) => {
+  return async (dispatch: any, getState: any) => {
+    const { uid } = getState().auth.user;
     dispatch(removeTodo(id));
-    await API.todos.remove(id);
+    await API.todos.remove(uid, id);
   };
 };
 
@@ -47,8 +50,9 @@ export const updateTodo = (id: string, updates: Updates): Action => ({
 });
 
 export const startUpdateTodo = (id: string, updates: Updates) => {
-  return async (dispatch: any) => {
+  return async (dispatch: any, getState: any) => {
+    const { uid } = getState().auth.user;
     dispatch(updateTodo(id, updates));
-    await API.todos.update(id, updates);
+    await API.todos.update(uid, id, updates);
   };
 };

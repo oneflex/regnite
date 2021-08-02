@@ -2,13 +2,13 @@ import { TodoData, Updates } from "../actions/todos/types";
 import { Todo } from "../types";
 import { database } from "./firebase";
 
-async function create(todo: TodoData) {
-  const ref = await database.ref(`todos`).push(todo);
+async function create(uid: string, todo: TodoData) {
+  const ref = await database.ref(`users/${uid}/todos`).push(todo);
   return ref.key;
 }
 
-async function read() {
-  const snapshot = await database.ref(`todos`).once("value");
+async function read(uid: string) {
+  const snapshot = await database.ref(`users/${uid}/todos`).once("value");
   const todos: Array<Todo> = [];
 
   snapshot.forEach(childSnapshot => {
@@ -21,12 +21,12 @@ async function read() {
   return todos;
 }
 
-function update(id: string, updates: Updates) {
-  return database.ref(`todos/${id}`).update(updates);
+function update(uid: string, id: string, updates: Updates) {
+  return database.ref(`users/${uid}/todos/${id}`).update(updates);
 }
 
-function remove(id: string) {
-  return database.ref(`todos/${id}`).remove();
+function remove(uid: string, id: string) {
+  return database.ref(`users/${uid}/todos/${id}`).remove();
 }
 
 export { create, read, update, remove };

@@ -16,10 +16,10 @@ export const updateError = (error: Error) => ({
   },
 });
 
-export const signIn = (uid: string) => ({
+export const signIn = (user: any) => ({
   type: "SIGN_IN",
   payload: {
-    uid,
+    user,
   },
 });
 
@@ -39,7 +39,7 @@ export const startSignIn = (email: string, password: string) => {
 
     dispatch(updateStatus("succeeded"));
     dispatch(updateError(null));
-    dispatch(signIn(userCredential.user.uid));
+    dispatch(signIn(userCredential.user));
     dispatch(updateStatus("idle"));
   };
 };
@@ -60,7 +60,7 @@ export const startSignUp = (email: string, password: string) => {
 
     dispatch(updateStatus("succeeded"));
     dispatch(updateError(null));
-    dispatch(signIn(userCredential.user.uid));
+    dispatch(signIn(userCredential.user));
     dispatch(updateStatus("idle"));
   };
 };

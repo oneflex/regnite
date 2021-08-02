@@ -48,6 +48,7 @@ function SignInWithEmailScreen(props: any) {
         autoFocus
         keyboardType="email-address"
         textContentType="emailAddress"
+        autoCapitalize="none"
       />
       <InputBox
         value={password}

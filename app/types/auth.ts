@@ -1,9 +1,10 @@
-export type UID = string | undefined;
+import firebase from "firebase/app";
 export type Status = "idle" | "loading" | "succeeded" | "failed";
 export type Error = string | null;
+export type User = firebase.User | null;
 
 export interface Auth {
-  uid: UID;
+  user: User;
   status: Status;
   error: Error;
 }

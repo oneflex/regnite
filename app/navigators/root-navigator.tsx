@@ -36,7 +36,7 @@ const RootStack = (props: any) => {
 };
 
 const mapStateToProps = (state: any) => ({
-  isSignedIn: state.auth.uid,
+  isSignedIn: state.auth.user,
 });
 
 const ConnectedRootStack = connect(mapStateToProps)(RootStack);

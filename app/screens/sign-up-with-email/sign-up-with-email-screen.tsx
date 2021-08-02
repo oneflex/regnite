@@ -28,6 +28,7 @@ function SignUpWithEmailScreen(props: any) {
         autoCompleteType="email"
         keyboardType="email-address"
         textContentType="emailAddress"
+        autoCapitalize="none"
         error={
           !!credentialsFields.email.value && !credentialsFields.email.isValid
         }
