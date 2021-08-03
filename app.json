@@ -21,6 +21,10 @@
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
-    }
+    },
+    "facebookScheme": "fb1553878008291137",
+    "facebookAppId": "1553878008291137",
+    "facebookDisplayName": "regnite-todo",
+    "facebookAutoInitEnabled": true
   }
 }

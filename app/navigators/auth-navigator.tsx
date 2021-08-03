@@ -6,7 +6,6 @@ import {
   SignUpWithEmailScreen,
 } from "../screens";
 import { color } from "../theme";
-import Header from "../components/header/header";
 
 export type PrimaryParamList = {
   Welcome: undefined;

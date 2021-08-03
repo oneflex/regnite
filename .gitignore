@@ -68,6 +68,7 @@ buck-out/
 # Expo
 .expo/*
 bin/Exponent.app
+app.json
 
 npm-debug.*
 *.jks

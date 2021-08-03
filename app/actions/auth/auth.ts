@@ -1,6 +1,7 @@
 import { firebase } from "../../firebase/firebase";
 import { to } from "../../utils/to";
 import { Status, Error } from "../../types/auth";
+import { getFacebookToken } from "../../firebase/auth";
 
 export const updateStatus = (status: Status) => ({
   type: "UPDATE_STATUS",
@@ -50,6 +51,37 @@ export const startSignUp = (email: string, password: string) => {
 
     const [error, userCredential] = await to(
       firebase.auth().createUserWithEmailAndPassword(email, password),
+    );
+
+    if (error) {
+      dispatch(updateStatus("failed"));
+      dispatch(updateError(error.message));
+      return;
+    }
+
+    dispatch(updateStatus("succeeded"));
+    dispatch(updateError(null));
+    dispatch(signIn(userCredential.user));
+    dispatch(updateStatus("idle"));
+  };
+};
+
+export const startSignInWithFacebook = () => {
+  return async (dispatch: any) => {
+    dispatch(updateStatus("loading"));
+
+    const [fbError, token] = await to(getFacebookToken());
+
+    if (fbError) {
+      dispatch(updateStatus("failed"));
+      dispatch(updateError(fbError.message));
+      return;
+    }
+
+    const credentials = firebase.auth.FacebookAuthProvider.credential(token);
+
+    const [error, userCredential] = await to(
+      firebase.auth().signInWithCredential(credentials),
     );
 
     if (error) {
