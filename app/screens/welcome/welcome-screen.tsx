@@ -4,7 +4,11 @@ import { connect } from "react-redux";
 import Heading from "../../components/heading/heading";
 import Screen from "../../components/screen/screen";
 import Button from "../../components/button/button";
-import { startSignInWithFacebook } from "../../actions/auth/auth";
+import {
+  startSignInAnonymously,
+  startSignInWithFacebook,
+  startSignInWithGoogle,
+} from "../../actions/auth/auth";
 import ErrorMessage from "../../components/error-message/error-message";
 import { spacing } from "../../theme";
 
@@ -25,11 +29,12 @@ function WelcomeScreen(props: any) {
           title="Email and password"
           onPress={() => props.navigation.push("SignInWithEmail")}
         ></Button>
-        <Button title="Gmail" onPress={() => 1}></Button>
+        <Button title="Anonymous" onPress={props.signInAnonymously}></Button>
+        <Button title="Gmail" onPress={props.signInWithGoogle}></Button>
         <Button title="Facebook" onPress={props.signInWithFacebook}></Button>
         {props.error && (
           <View style={ERROR}>
-            <ErrorMessage text="We encountered an error while trying to sign you in. Please try again later 🙏🏻" />
+            <ErrorMessage text={props.error} />
           </View>
         )}
       </View>
@@ -39,6 +44,8 @@ function WelcomeScreen(props: any) {
 
 const mapDispatchToProps = (dispatch: any) => ({
   signInWithFacebook: () => dispatch(startSignInWithFacebook()),
+  signInWithGoogle: () => dispatch(startSignInWithGoogle()),
+  signInAnonymously: () => dispatch(startSignInAnonymously()),
 });
 
 const mapStateToProps = (state: any) => ({

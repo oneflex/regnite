@@ -45,8 +45,14 @@ const mapDispatchToProps = (dispatch: any) => ({
   signOut: () => dispatch(signOut()),
 });
 
-const mapStateToProps = (state: any) => ({
-  name: state.auth.user && state.auth.user.email.split("@")[0],
-});
+const mapStateToProps = (state: any) => {
+  if (!state.auth.user) return {};
+
+  return {
+    name: state.auth.user.email
+      ? state.auth.user.email.split("@")[0]
+      : "anonymous user",
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);

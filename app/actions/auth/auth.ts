@@ -1,7 +1,7 @@
 import { firebase } from "../../firebase/firebase";
 import { to } from "../../utils/to";
 import { Status, Error } from "../../types/auth";
-import { getFacebookToken } from "../../firebase/auth";
+import { getFacebookToken, getGoogleToken } from "../../firebase/auth";
 
 export const updateStatus = (status: Status) => ({
   type: "UPDATE_STATUS",
@@ -73,6 +73,9 @@ export const startSignInWithFacebook = () => {
     const [fbError, token] = await to(getFacebookToken());
 
     if (fbError) {
+      if (fbError.message === "canceled") {
+        return;
+      }
       dispatch(updateStatus("failed"));
       dispatch(updateError(fbError.message));
       return;
@@ -82,6 +85,61 @@ export const startSignInWithFacebook = () => {
 
     const [error, userCredential] = await to(
       firebase.auth().signInWithCredential(credentials),
+    );
+
+    if (error) {
+      dispatch(updateStatus("failed"));
+      dispatch(updateError("Login with Facebook failed"));
+      return;
+    }
+
+    dispatch(updateStatus("succeeded"));
+    dispatch(updateError(null));
+    dispatch(signIn(userCredential.user));
+    dispatch(updateStatus("idle"));
+  };
+};
+
+export const startSignInWithGoogle = () => {
+  return async (dispatch: any) => {
+    dispatch(updateStatus("loading"));
+
+    const [googleError, accessToken] = await to(getGoogleToken());
+
+    if (googleError) {
+      dispatch(updateStatus("failed"));
+      dispatch(updateError("Login with Google failed"));
+      return;
+    }
+
+    const credentials = firebase.auth.GoogleAuthProvider.credential(
+      null,
+      accessToken,
+    );
+
+    const [error, userCredential] = await to(
+      firebase.auth().signInWithCredential(credentials),
+    );
+
+    if (error) {
+      dispatch(updateStatus("failed"));
+      dispatch(updateError(error.message));
+      return;
+    }
+
+    dispatch(updateStatus("succeeded"));
+    dispatch(updateError(null));
+    dispatch(signIn(userCredential.user));
+    dispatch(updateStatus("idle"));
+  };
+};
+
+export const startSignInAnonymously = () => {
+  return async (dispatch: any) => {
+    dispatch(updateStatus("loading"));
+
+    const [error, userCredential] = await to(
+      firebase.auth().signInAnonymously(),
     );
 
     if (error) {
