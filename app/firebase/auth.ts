@@ -19,7 +19,9 @@ export async function getFacebookToken() {
     }),
   );
 
-  if (error) throw new Error(error.message);
+  if (error) {
+    throw new Error(error.message);
+  }
 
   if (data.type === "success") {
     return data.token;
@@ -37,7 +39,9 @@ export async function getGoogleToken() {
     }),
   );
 
-  if (error) throw new Error(error.message);
+  if (error) {
+    throw new Error(error.message);
+  }
 
   if (result.type === "success") {
     return result.accessToken;

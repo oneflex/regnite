@@ -1,21 +1,24 @@
-import { createStore, combineReducers, applyMiddleware, compose } from "redux";
-import ReduxThunk from "redux-thunk";
-import logger from "redux-logger";
-import todosReducer from "../reducers/todos/todos";
-import filtersReducer from "../reducers/filters/filters";
-import authReducer from "../reducers/auth/auth";
+import { createStore, applyMiddleware, compose } from "redux";
+import { persistStore, persistReducer } from "redux-persist";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import rootReducer from "./rootReducer";
+import middlewares from "./middlewares";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+const persistConfig = {
+  key: "root",
+  storage: AsyncStorage,
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 export default () => {
   const store = createStore(
-    combineReducers({
-      todos: todosReducer,
-      filters: filtersReducer,
-      auth: authReducer,
-    }),
-    composeEnhancers(applyMiddleware(ReduxThunk /* logger */)),
+    persistedReducer,
+    composeEnhancers(applyMiddleware(...middlewares)),
   );
+  const persistor = persistStore(store);
 
-  return store;
+  return { store, persistor };
 };
