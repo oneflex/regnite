@@ -10,10 +10,11 @@ import { useFonts } from "expo-font";
 import { RootNavigator } from "./navigators";
 import { color } from "./theme";
 import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 import configureStore from "./store/configureStore";
 import fonts from "./theme/fonts";
 
-const store = configureStore();
+const { store, persistor } = configureStore();
 
 const FULL: ViewStyle = {
   flex: 1,
@@ -27,11 +28,13 @@ function App() {
 
   return (
     <Provider store={store}>
-      <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-        <SafeAreaView edges={["top"]} style={FULL}>
-          <RootNavigator />
-        </SafeAreaView>
-      </SafeAreaProvider>
+      <PersistGate loading={null} persistor={persistor}>
+        <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+          <SafeAreaView edges={["top"]} style={FULL}>
+            <RootNavigator />
+          </SafeAreaView>
+        </SafeAreaProvider>
+      </PersistGate>
     </Provider>
   );
 }
