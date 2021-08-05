@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { startAddTodo } from "../../actions/todos/todos";
 import { TodoData } from "../../actions/todos/types";
 import SubmitButton from "../submit-button/submit-button";
+import { translate } from "../../i18n";
 
 const CONTAINER: ViewStyle = {
   paddingHorizontal: spacing[5],
@@ -50,7 +51,7 @@ const NewTodoForm: React.FC<NewTodoFormProps> = props => {
 
   return (
     <View style={[CONTAINER, props.style]}>
-      <SubHeading text="ADD NEW TASK" />
+      <SubHeading text={translate("homeScreen.subtitle.newTask")} />
       <View style={ADD_TODO_FORM}>
         <TextInput
           style={INPUT}

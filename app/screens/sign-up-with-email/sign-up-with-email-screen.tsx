@@ -8,6 +8,7 @@ import LoadingButton from "../../components/loading-button/loading-button";
 import { startSignUp } from "../../actions/auth/auth";
 import { connect } from "react-redux";
 import { spacing } from "../../theme";
+import { translate } from "../../i18n";
 
 const LOADING_BUTTON: ViewStyle = {
   paddingVertical: spacing[4],
@@ -19,12 +20,12 @@ function SignUpWithEmailScreen(props: any) {
 
   return (
     <Screen>
-      <Heading text="Sign up with email" />
+      <Heading text={translate("signUpWithEmailScreen.title")} />
       <InputBox
         value={credentialsFields.email.value}
         onChangeText={credentialsFields.email.update}
-        label="EMAIL"
-        placeholder="Email"
+        label={translate("common.email").toLocaleUpperCase()}
+        placeholder={translate("common.placeholder.email")}
         autoCompleteType="email"
         keyboardType="email-address"
         textContentType="emailAddress"
@@ -32,13 +33,13 @@ function SignUpWithEmailScreen(props: any) {
         error={
           !!credentialsFields.email.value && !credentialsFields.email.isValid
         }
-        errorMessage="Invalid Email"
+        errorMessage={translate("errors.invalidEmail")}
       />
       <InputBox
         value={credentialsFields.password.value}
         onChangeText={credentialsFields.password.update}
-        label="PASSWORD"
-        placeholder="Password"
+        label={translate("common.password").toLocaleUpperCase()}
+        placeholder={translate("common.placeholder.password")}
         autoCompleteType="password"
         textContentType="password"
         secureTextEntry
@@ -46,13 +47,13 @@ function SignUpWithEmailScreen(props: any) {
           !!credentialsFields.password.value &&
           !credentialsFields.password.isValid
         }
-        errorMessage="Password must be at least 6 character long, with one upper case letter and one number"
+        errorMessage={translate("errors.invalidPassword")}
       />
       <LoadingButton
         style={LOADING_BUTTON}
         isLoading={props.isLoading}
         error={props.error}
-        title="Sign Up"
+        title={translate("common.signUp")}
         onPress={() =>
           props.signUp(
             credentialsFields.email.value,

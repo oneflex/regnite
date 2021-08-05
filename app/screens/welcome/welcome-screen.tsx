@@ -11,6 +11,7 @@ import {
 } from "../../actions/auth/auth";
 import ErrorMessage from "../../components/error-message/error-message";
 import { spacing } from "../../theme";
+import { translate } from "../../i18n";
 
 const ERROR: ViewStyle = {
   paddingHorizontal: spacing[5],
@@ -23,15 +24,24 @@ const BUTTONS: ViewStyle = {
 function WelcomeScreen(props: any) {
   return (
     <Screen>
-      <Heading text="Welcome!"></Heading>
+      <Heading text={translate("welcomeScreen.title")}></Heading>
       <View style={BUTTONS}>
         <Button
-          title="Email and password"
+          title={translate("welcomeScreen.signInMethods.email")}
           onPress={() => props.navigation.push("SignInWithEmail")}
         ></Button>
-        <Button title="Anonymous" onPress={props.signInAnonymously}></Button>
-        <Button title="Gmail" onPress={props.signInWithGoogle}></Button>
-        <Button title="Facebook" onPress={props.signInWithFacebook}></Button>
+        <Button
+          title={translate("welcomeScreen.signInMethods.anonymous")}
+          onPress={props.signInAnonymously}
+        ></Button>
+        <Button
+          title={translate("welcomeScreen.signInMethods.gmail")}
+          onPress={props.signInWithGoogle}
+        ></Button>
+        <Button
+          title={translate("welcomeScreen.signInMethods.facebook")}
+          onPress={props.signInWithFacebook}
+        ></Button>
         {props.error && (
           <View style={ERROR}>
             <ErrorMessage text={props.error} />

@@ -8,6 +8,7 @@ import { Todo } from "../../types";
 import { filterTodos } from "../../selectors/todos";
 import { startSetTodos } from "../../actions/todos/todos";
 import { spacing } from "../../theme";
+import { translate } from "../../i18n";
 
 const CONTAINER: ViewStyle = { flex: 1 };
 
@@ -36,7 +37,10 @@ const TodoList: React.FC<TodoListProps> = props => {
 
   return (
     <View style={[CONTAINER, style]}>
-      <SubHeading text="TODAY'S TASKS" style={HEADING} />
+      <SubHeading
+        text={translate("homeScreen.subtitle.todayTasks")}
+        style={HEADING}
+      />
       <FlatList
         data={props.todos}
         renderItem={({ item }): any => <TodoItem {...item} />}

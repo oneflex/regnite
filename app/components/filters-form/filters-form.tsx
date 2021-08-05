@@ -8,6 +8,7 @@ import SortButton from "../sort-button/sort-button";
 import { connect } from "react-redux";
 import { updateFilterBy, updateSortBy } from "../../actions/filters/filters";
 import { calculateTodosCount } from "../../selectors/todos";
+import { translate } from "../../i18n";
 
 const CONTAINER: ViewStyle = {};
 
@@ -37,7 +38,7 @@ const FiltersForm: React.FC<FiltersFormProps> = props => {
           return (
             <CategoryButton
               key={category}
-              text={category}
+              text={translate(`todos.categories.${category}`)}
               todosCompleted={props.todosCount[category].completed}
               todosNumber={props.todosCount[category].total}
               color={color.category[category]}
@@ -52,11 +53,11 @@ const FiltersForm: React.FC<FiltersFormProps> = props => {
       />
       <View style={SORT_OPTIONS}>
         <SortButton
-          text={"Sort by a-z"}
+          text={translate("sortBy.asc")}
           handleClick={() => props.updateSortBy("nameAsc")}
         />
         <SortButton
-          text={"Sort by z-a"}
+          text={translate("sortBy.des")}
           handleClick={() => props.updateSortBy("nameDes")}
         />
       </View>

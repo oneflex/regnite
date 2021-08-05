@@ -13,6 +13,7 @@ import Screen from "../../components/screen/screen";
 import LoadingButton from "../../components/loading-button/loading-button";
 import { startSignIn } from "../../actions/auth/auth";
 import { connect } from "react-redux";
+import { translate } from "../../i18n";
 
 const LOADING_BUTTON: ViewStyle = {
   paddingVertical: spacing[4],
@@ -39,11 +40,11 @@ function SignInWithEmailScreen(props: any) {
 
   return (
     <Screen>
-      <Heading text="Sign in with email" />
+      <Heading text={translate("signInWithEmailScreen.title")} />
       <InputBox
         value={email}
         onChangeText={setEmail}
-        placeholder="Enter email"
+        placeholder={translate("common.placeholder.email")}
         autoCompleteType="email"
         autoFocus
         keyboardType="email-address"
@@ -53,7 +54,7 @@ function SignInWithEmailScreen(props: any) {
       <InputBox
         value={password}
         onChangeText={setPassword}
-        placeholder="Enter password"
+        placeholder={translate("common.placeholder.password")}
         autoCompleteType="password"
         textContentType="password"
         secureTextEntry
@@ -62,16 +63,20 @@ function SignInWithEmailScreen(props: any) {
         style={LOADING_BUTTON}
         isLoading={props.isLoading}
         error={props.error}
-        title="Sign In"
+        title={translate("common.signIn")}
         onPress={() => props.signIn(email, password)}
         disabled={!email || !password}
       />
       <View style={SIGN_UP_MESSAGE}>
-        <Text style={SIGN_UP_TEXT}>Don't have an account?</Text>
+        <Text style={SIGN_UP_TEXT}>
+          {translate("signInWithEmailScreen.signUpMessage")}
+        </Text>
         <TouchableOpacity
           onPress={() => props.navigation.push("SignUpWithEmail")}
         >
-          <Text style={[SIGN_UP_TEXT, SIGN_UP_BUTTON]}>Sign Up</Text>
+          <Text style={[SIGN_UP_TEXT, SIGN_UP_BUTTON]}>
+            {translate("common.signUp")}
+          </Text>
         </TouchableOpacity>
       </View>
     </Screen>
