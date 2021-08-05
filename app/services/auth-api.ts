@@ -6,6 +6,7 @@ import {
 import * as Facebook from "expo-facebook";
 import * as Google from "expo-google-app-auth";
 import { to } from "../utils/to";
+import { firebase } from "../firebase";
 
 export async function getFacebookToken() {
   await Facebook.initializeAsync({
@@ -48,4 +49,35 @@ export async function getGoogleToken() {
   } else {
     throw new Error("canceled");
   }
+}
+
+export async function signInWithFacebook(token: string) {
+  const credentials = firebase.auth.FacebookAuthProvider.credential(token);
+  return await to(firebase.auth().signInWithCredential(credentials));
+}
+
+export async function signInWithGoogle(accessToken: string) {
+  const credentials = firebase.auth.GoogleAuthProvider.credential(
+    null,
+    accessToken,
+  );
+  return await to(firebase.auth().signInWithCredential(credentials));
+}
+
+export async function signInAnonymously() {
+  return await to(firebase.auth().signInAnonymously());
+}
+
+export async function signInWithEmail(email: string, password: string) {
+  return await to(firebase.auth().signInWithEmailAndPassword(email, password));
+}
+
+export async function signUpWithEmail(email: string, password: string) {
+  return await to(
+    firebase.auth().createUserWithEmailAndPassword(email, password),
+  );
+}
+
+export function signOut() {
+  firebase.auth().signOut();
 }
