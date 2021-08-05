@@ -11,7 +11,7 @@ import Heading from "../../components/heading/heading";
 import NewTodoForm from "../../components/new-todo-form/new-todo-form";
 import FiltersForm from "../../components/filters-form/filters-form";
 import Screen from "../../components/screen/screen";
-import { signOut } from "../../actions/auth/auth";
+import { startSignOut } from "../../actions/auth/auth";
 import { connect } from "react-redux";
 import { spacing } from "../../theme";
 import { translate } from "../../i18n";
@@ -43,7 +43,7 @@ function HomeScreen(props: any) {
 }
 
 const mapDispatchToProps = (dispatch: any) => ({
-  signOut: () => dispatch(signOut()),
+  signOut: () => dispatch(startSignOut()),
 });
 
 const mapStateToProps = (state: any) => {
