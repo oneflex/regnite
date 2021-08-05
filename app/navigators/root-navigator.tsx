@@ -8,8 +8,6 @@ import { MainNavigator } from "./main-navigator";
 import { AuthNavigator } from "./auth-navigator";
 import { color } from "../theme";
 import { connect } from "react-redux";
-import firebase from "firebase/app";
-import "firebase/auth";
 
 export type RootParamList = {
   mainStack: undefined;
@@ -40,14 +38,6 @@ const mapStateToProps = (state: any) => ({
 });
 
 const ConnectedRootStack = connect(mapStateToProps)(RootStack);
-
-firebase.auth().onAuthStateChanged(user => {
-  if (user) {
-    console.log("signed out");
-  } else {
-    console.log("signed out");
-  }
-});
 
 export const RootNavigator = React.forwardRef<
   NavigationContainerRef,
