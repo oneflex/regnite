@@ -4,6 +4,7 @@
     "start": "expo start",
     "dev": "open rndebugger://set-debugger-loc?host=localhost&port=19000 && expo start",
     "test": "jest",
+    "g": "npx ignite-cli generate",
     "adb": "adb reverse tcp:9090 tcp:9090 && adb reverse tcp:3000 tcp:3000 && adb reverse tcp:9001 tcp:9001 && adb reverse tcp:8081 tcp:8081",
     "postinstall": "node ./bin/postInstall",
     "build-ios": "react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ios/main.jsbundle --assets-dest ios",
@@ -13,8 +14,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject",
-    "g": "npx ignite-cli generate"
+    "eject": "expo eject"
   },
   "dependencies": {
     "@expo/webpack-config": "~0.12.63",
