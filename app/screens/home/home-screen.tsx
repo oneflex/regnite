@@ -14,6 +14,7 @@ import Screen from "../../components/screen/screen";
 import { signOut } from "../../actions/auth/auth";
 import { connect } from "react-redux";
 import { spacing } from "../../theme";
+import { translate } from "../../i18n";
 
 const CONTAINER: ViewStyle = { flex: 1 };
 
@@ -32,7 +33,7 @@ function HomeScreen(props: any) {
         <TouchableOpacity style={LOGOUT_BUTTON} onPress={() => props.signOut()}>
           <Text style={LOGOUT_BUTTON_TEXT}>{"👋🏻"}</Text>
         </TouchableOpacity>
-        <Heading text={`What's up, ${props.name}!`} />
+        <Heading text={`${translate("homeScreen.title")}, ${props.name}!`} />
         <FiltersForm />
         <NewTodoForm />
         <TodoList />

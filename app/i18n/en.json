@@ -1,0 +1,53 @@
+{
+  "common": {
+    "ok": "OK!",
+    "cancel": "Cancel",
+    "back": "Back",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "placeholder": {
+      "email": "Enter email",
+      "password": "Enter password"
+    }
+  },
+  "errors": {
+    "invalidEmail": "Invalid email address.",
+    "invalidPassword": "Password must be at least 6 character long, with one upper case letter and one number."
+  },
+  "welcomeScreen": {
+    "title": "Welcome!",
+    "signInMethods": {
+      "email": "Email and Password",
+      "anonymous": "Anonymous",
+      "gmail": "Gmail",
+      "facebook": "Facebook"
+    }
+  },
+  "signInWithEmailScreen": {
+    "title": "Sign in with email",
+    "signUpMessage": "Don't have an account?"
+  },
+  "signUpWithEmailScreen": {
+    "title": "Sign up with email"
+  },
+  "homeScreen": {
+    "title": "Hello",
+    "subtitle": {
+      "newTask": "ADD NEW TASK",
+      "todayTasks": "TODAY'S TASKS"
+    }
+  },
+  "todos": {
+    "categories": {
+      "personal": "personal",
+      "work": "work",
+      "all": "all"
+    }
+  },
+  "sortBy": {
+    "asc": "Sort by A-Z",
+    "des": "Sort by Z-A"
+  }
+}

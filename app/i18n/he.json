@@ -1,0 +1,53 @@
+{
+  "common": {
+    "ok": "אוקיי!",
+    "cancel": "ביטול",
+    "back": "חזור",
+    "signIn": "כנס",
+    "signUp": "הירשם",
+    "email": "אימייל",
+    "password": "סיסמא",
+    "placeholder": {
+      "email": "הכנס מייל",
+      "password": "הכנס סיסמא"
+    }
+  },
+  "errors": {
+    "invalidEmail": "כתובת מייל שגויה.",
+    "invalidPassword": "הסיסמא חייבת להכיל לפחות 6 תווים, לכלול אות גדולה וספרה."
+  },
+  "welcomeScreen": {
+    "title": "ברוך הבא!",
+    "signInMethods": {
+      "email": "אימייל",
+      "anonymous": "אנונימי",
+      "gmail": "גוגל",
+      "facebook": "פייסבוק"
+    }
+  },
+  "signInWithEmailScreen": {
+    "title": "המשך עם אימייל",
+    "signUpMessage": "אין לך חשבון?"
+  },
+  "signUpWithEmailScreen": {
+    "title": "הירשם עם אימייל"
+  },
+  "homeScreen": {
+    "title": "שלום",
+    "subtitle": {
+      "newTask": "הוסף משימה חדשה",
+      "todayTasks": "המשימות שלך"
+    }
+  },
+  "todos": {
+    "categories": {
+      "personal": "אישי",
+      "work": "עבודה",
+      "all": "הכול"
+    }
+  },
+  "sortBy": {
+    "asc": "מיין בסדר עולה",
+    "des": "מיין בסדר יורד"
+  }
+}
