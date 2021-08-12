@@ -9,7 +9,10 @@ const Container = styled.View(() => ({
   paddingHorizontal: spacing[5],
 }));
 
-const Text = styled.Text(props => ({
+interface TextProps {
+  fontSize: number;
+}
+const Text = styled.Text<TextProps>(props => ({
   fontFamily: typography.primary.bold,
   fontSize: props.fontSize,
   color: props.theme.text[100],
