@@ -21,7 +21,7 @@ const ADD_TODO_FORM: ViewStyle = {
 
 const INPUT: TextStyle = {
   flex: 1,
-  backgroundColor: color.secondaryBackground,
+  backgroundColor: "white",
   fontSize: spacing[5],
   marginVertical: spacing[1],
   paddingHorizontal: spacing[3],

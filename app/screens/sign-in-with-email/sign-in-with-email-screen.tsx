@@ -31,7 +31,7 @@ const SIGN_UP_TEXT: TextStyle = {
 
 const SIGN_UP_BUTTON: TextStyle = {
   marginLeft: spacing[1],
-  color: color.secondaryPrimary,
+  color: "white",
 };
 
 function SignInWithEmailScreen(props: any) {

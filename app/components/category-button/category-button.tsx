@@ -7,7 +7,7 @@ import { AnimatedCircularProgress } from "react-native-circular-progress";
 const CATEGORY_BUTTON: ViewStyle = {
   justifyContent: "center",
   alignItems: "center",
-  backgroundColor: color.secondaryBackground,
+  backgroundColor: "white",
   marginVertical: spacing[2],
   marginRight: spacing[3],
   padding: spacing[5],
@@ -26,7 +26,7 @@ const CATEGORY_BUTTON: ViewStyle = {
 
 const CATEGORY_BUTTON_TEXT: TextStyle = {
   fontSize: spacing[4],
-  color: color.text,
+  color: "white",
   textAlignVertical: "center",
 };
 

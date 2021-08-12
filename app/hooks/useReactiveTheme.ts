@@ -7,7 +7,6 @@ export function useReactiveTheme<T>(lightTheme: T, darkTheme: T): T {
 
   useEffect(() => {
     setTheme(colorScheme === "light" ? lightTheme : darkTheme);
-    console.log(colorScheme);
   }, [colorScheme]);
 
   return theme;

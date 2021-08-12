@@ -6,7 +6,6 @@ import {
 import { createStackNavigator } from "@react-navigation/stack";
 import { MainNavigator } from "./main-navigator";
 import { AuthNavigator } from "./auth-navigator";
-import { color } from "../theme";
 import { connect } from "react-redux";
 
 export type RootParamList = {
@@ -20,7 +19,7 @@ const RootStack = (props: any) => {
   return (
     <Stack.Navigator
       screenOptions={{
-        cardStyle: { backgroundColor: color.background },
+        cardStyle: { backgroundColor: "white" },
         headerShown: false,
       }}
     >

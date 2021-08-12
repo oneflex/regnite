@@ -4,7 +4,7 @@ import { ViewStyle } from "react-native";
 import { spacing, typography } from "../../app/theme";
 
 const Container = styled.View(props => ({
-  backgroundColor: props.theme.background,
+  backgroundColor: props.theme.background[100],
 }));
 
 const Header = styled.View(() => ({
@@ -17,21 +17,21 @@ const Title = styled.Text(props => ({
   fontFamily: typography.primary.bold,
   fontSize: spacing[5],
   fontWeight: "600",
-  color: props.theme.text,
+  color: props.theme.text[100],
 }));
 
 const Description = styled.Text(props => ({
   paddingVertical: spacing[2],
   fontSize: spacing[4],
   fontWeight: "600",
-  color: props.theme.dim,
+  color: props.theme.text[200],
 }));
 
 const Component = styled.View((props: any) => ({
   padding: props.noPad ? 0 : spacing[4],
   backgroundColor: props.noBackground
     ? props.theme.transparent
-    : props.theme.background,
+    : props.theme.background[100],
 }));
 
 export interface UseCaseProps {

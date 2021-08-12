@@ -4,8 +4,12 @@ import { spacing, typography } from "../../app/theme";
 import Markdown from "react-native-markdown-display";
 import { useTheme } from "@emotion/react";
 
+export type PropsData = Array<
+  [name: string, description: string, defaultValue: string]
+>;
+
 const Container = styled.View(props => ({
-  backgroundColor: props.theme.background,
+  backgroundColor: props.theme.background[100],
   paddingHorizontal: spacing[5],
 }));
 
@@ -18,7 +22,7 @@ const Title = styled.Text(props => ({
   fontFamily: typography.primary.bold,
   fontSize: spacing[5],
   fontWeight: "600",
-  color: props.theme.text,
+  color: props.theme.text[100],
 }));
 
 export interface DescriptionProps {
@@ -32,7 +36,7 @@ function Description(props: DescriptionProps) {
     body: {
       paddingVertical: spacing[2],
       fontSize: spacing[4],
-      color: theme.text,
+      color: theme.text[100],
       fontFamily: typography.primary.regular,
     },
     code_inline: {
@@ -48,7 +52,7 @@ function Description(props: DescriptionProps) {
 
 export interface PropsTableProps {
   /** trios of prop name, description and default value */
-  propsData: Array<[name: string, description: string, defaultValue: string]>;
+  propsData: PropsData;
 }
 
 function PropsTable(props: PropsTableProps) {
@@ -57,7 +61,7 @@ function PropsTable(props: PropsTableProps) {
     body: {
       paddingVertical: spacing[2],
       fontSize: spacing[4],
-      color: theme.text,
+      color: theme.text[100],
       fontFamily: typography.primary.regular,
     },
   };
@@ -80,7 +84,7 @@ export interface DocsProps {
   /** Information about the component */
   description?: string;
   /** trios of prop name, description and default value */
-  propsData: Array<[string, string, string]>;
+  propsData: PropsData;
 }
 
 export function Docs(props: DocsProps) {

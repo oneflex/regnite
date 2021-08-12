@@ -1,3 +1,4 @@
+import { Primary, Red } from "./colors";
 import { Palette } from "./palette";
 
 export interface ThemeInterface {
@@ -12,35 +13,27 @@ export interface ThemeInterface {
   /**
    * The screen background.
    */
-  background: string;
-  /**
-   * The screen background.
-   */
-  secondaryBackground: string;
+  background: {
+    100: string;
+    200: string;
+    300: string;
+  };
   /**
    * The main tinting color.
    */
-  primary: string;
-  /**
-   * The secondary tinting color.
-   */
-  secondaryPrimary: string;
+  primary: Primary;
   /**
    * The default color of text in many components.
    */
-  text: string;
-  /**
-   * Secondary information.
-   */
-  dim: string;
-  /**
-   * More secondary information.
-   */
-  dimmer: string;
+  text: {
+    100: string;
+    200: string;
+    300: string;
+  };
   /**
    * Error messages and icons.
    */
-  error: string;
+  error: Red;
   /**
    * Colors for categories
    */

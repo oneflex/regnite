@@ -4,7 +4,7 @@ import styled from "@emotion/native";
 import { ScrollView } from "react-native-gesture-handler";
 
 const Container = styled.KeyboardAvoidingView(props => ({
-  backgroundColor: props.theme.background,
+  backgroundColor: props.theme.background[100],
   flex: 1,
 }));
 

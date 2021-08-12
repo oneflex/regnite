@@ -2,7 +2,7 @@ import * as React from "react";
 import { InputBoxProps } from "./input-box.props";
 import { View, ViewStyle, TextStyle } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
-import { spacing, color } from "../../theme";
+import { spacing } from "../../theme";
 import { condStyle } from "../../utils/cond-style";
 import SubHeading from "../sub-heading/sub-heading";
 import ErrorMessage from "../error-message/error-message";
@@ -15,19 +15,19 @@ const CONTAINER: ViewStyle = {
 const INPUT: ViewStyle = {
   flexDirection: "row",
   padding: spacing[4],
-  backgroundColor: color.secondaryBackground,
+  backgroundColor: "white",
   borderRadius: 10,
-  borderColor: color.dimmer,
+  borderColor: "white",
   borderWidth: 2,
 };
 
 const INPUT_ERROR: ViewStyle = {
-  borderColor: color.error,
+  borderColor: "white",
 };
 
 const INPUT_TEXT: TextStyle = {
   fontSize: spacing[5],
-  color: color.text,
+  color: "white",
 };
 
 const InputBox: React.FC<InputBoxProps> = props => {

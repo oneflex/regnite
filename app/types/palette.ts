@@ -1,11 +1,10 @@
+import { Green, Neutral, Primary, Red, Text, Yellow } from "./colors";
+
 export interface Palette {
-  blueWhite: string;
-  white: string;
-  black: string;
-  darkBlue: string;
-  lightBlue: string;
-  pink: string;
-  grey: string;
-  lightGrey: string;
-  angry: string;
+  primary: Primary;
+  text: Text;
+  neutral: Neutral;
+  red: Red;
+  yellow: Yellow;
+  green: Green;
 }

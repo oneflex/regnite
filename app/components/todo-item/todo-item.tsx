@@ -17,7 +17,7 @@ const CONTAINER: ViewStyle = {
   padding: spacing[5],
   marginVertical: spacing[1],
   marginHorizontal: spacing[5],
-  backgroundColor: color.secondaryBackground,
+  backgroundColor: "white",
   borderRadius: 15,
   shadowColor: "#000",
   shadowOffset: {
@@ -42,7 +42,7 @@ const DESCRIPTION_CONTAINER: ViewStyle = {
 const DESCRIPTION: TextStyle = {
   fontFamily: typography.primary.regular,
   fontSize: 30,
-  color: color.text,
+  color: "white",
 };
 
 const DESCRIPTION_CROSSED: TextStyle = {
@@ -58,7 +58,7 @@ const REMOVE_BUTTON: ViewStyle = {
 const REMOVE_BUTTON_TEXT: TextStyle = {
   fontFamily: typography.primary.regular,
   fontSize: 30,
-  color: color.text,
+  color: "white",
 };
 
 const TodoItem: React.FC<TodoProps> = props => {
