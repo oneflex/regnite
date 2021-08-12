@@ -1,11 +1,14 @@
 import * as React from "react";
 import { ScreenProps } from "./screen.props";
-import { View, ViewStyle } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useIsFirstRoute } from "../../hooks";
 import Header from "../header/header";
+import styled from "@emotion/native";
 
-const FULL: ViewStyle = { flex: 1 };
+const Container = styled.View(props => ({
+  flex: 1,
+  backgroundColor: props.theme.background,
+}));
 
 const Screen: React.FC<ScreenProps> = props => {
   const { style, showHeader = true } = props;
@@ -13,12 +16,12 @@ const Screen: React.FC<ScreenProps> = props => {
   const isFirstRoute = useIsFirstRoute();
 
   return (
-    <View style={[FULL, style]}>
+    <Container style={style}>
       {!isFirstRoute && showHeader && (
         <Header handleBackButtonClick={() => navigation.goBack()} />
       )}
       {props.children}
-    </View>
+    </Container>
   );
 };
 

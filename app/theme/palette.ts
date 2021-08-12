@@ -1,6 +1,9 @@
-export const palette = {
+import { Palette } from "../types/palette";
+
+export const palette: Palette = {
   blueWhite: "#fafbff",
   white: "#ffffff",
+  black: "black",
   darkBlue: "#243262",
   lightBlue: "#0476ff",
   pink: "#e80bf6",

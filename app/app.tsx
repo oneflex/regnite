@@ -13,13 +13,16 @@ import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import configureStore from "./store/configureStore";
 import fonts from "./theme/fonts";
+import ReactiveThemeProvider from "../app/components/reactive-theme-provider/reactive-theme-provider";
+import { darkTheme, lightTheme } from "../app/theme/themes";
+import styled from "@emotion/native";
 
 const { store, persistor } = configureStore();
 
-const FULL: ViewStyle = {
+const StyledSafeAreaView = styled(SafeAreaView)(props => ({
   flex: 1,
-  backgroundColor: color.background,
-};
+  backgroundColor: props.theme.background,
+}));
 
 function App() {
   const [loaded] = useFonts(fonts);
@@ -27,15 +30,17 @@ function App() {
   if (!loaded) return null;
 
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-          <SafeAreaView edges={["top"]} style={FULL}>
-            <RootNavigator />
-          </SafeAreaView>
-        </SafeAreaProvider>
-      </PersistGate>
-    </Provider>
+    <ReactiveThemeProvider lightTheme={lightTheme} darkTheme={darkTheme}>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+            <StyledSafeAreaView edges={["top"]}>
+              <RootNavigator />
+            </StyledSafeAreaView>
+          </SafeAreaProvider>
+        </PersistGate>
+      </Provider>
+    </ReactiveThemeProvider>
   );
 }
 

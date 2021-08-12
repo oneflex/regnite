@@ -1,7 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { getStorybookUI, configure } from "@storybook/react-native";
+import ReactiveThemeProvider from "../app/components/reactive-theme-provider/reactive-theme-provider";
+import { darkTheme, lightTheme } from "../app/theme/themes";
+import { useFonts } from "expo-font";
+import fonts from "../app/theme/fonts";
 
-declare let module;
+declare let module: any;
 
 configure(() => {
   require("./storybook-registry");
@@ -16,11 +20,13 @@ const StorybookUI = getStorybookUI({
 });
 
 export function StorybookUIRoot() {
-  // useEffect(() => {
-  //   (async () => {
-  //     await initFonts(); // expo only
-  //   })();
-  // }, []);
+  const [loaded] = useFonts(fonts);
 
-  return <StorybookUI />;
+  if (!loaded) return null;
+
+  return (
+    <ReactiveThemeProvider lightTheme={lightTheme} darkTheme={darkTheme}>
+      <StorybookUI />
+    </ReactiveThemeProvider>
+  );
 }

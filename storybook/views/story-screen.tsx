@@ -1,15 +1,21 @@
-import * as React from "react"
-import { ViewStyle, KeyboardAvoidingView, Platform } from "react-native"
+import * as React from "react";
+import { Platform } from "react-native";
+import styled from "@emotion/native";
+import { ScrollView } from "react-native-gesture-handler";
 
-const ROOT: ViewStyle = { backgroundColor: "#f0f0f0", flex: 1 }
+const Container = styled.KeyboardAvoidingView(props => ({
+  backgroundColor: props.theme.background,
+  flex: 1,
+}));
 
 export interface StoryScreenProps {
-  children?: React.ReactNode
+  children?: React.ReactNode;
 }
 
-const behavior = Platform.OS === "ios" ? "padding" : undefined
+const behavior = Platform.OS === "ios" ? "padding" : undefined;
+
 export const StoryScreen = (props: StoryScreenProps) => (
-  <KeyboardAvoidingView style={ROOT} behavior={behavior} keyboardVerticalOffset={50}>
-    {props.children}
-  </KeyboardAvoidingView>
-)
+  <Container behavior={behavior} keyboardVerticalOffset={50}>
+    <ScrollView>{props.children}</ScrollView>
+  </Container>
+);
