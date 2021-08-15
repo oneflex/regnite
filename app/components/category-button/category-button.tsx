@@ -1,7 +1,7 @@
 import * as React from "react";
 import { CategoryButtonProps } from "./category-button.props";
 import { TextStyle, TouchableOpacity, ViewStyle, Text } from "react-native";
-import { color, spacing } from "../../theme";
+import { spacing } from "../../theme";
 import { AnimatedCircularProgress } from "react-native-circular-progress";
 
 const CATEGORY_BUTTON: ViewStyle = {
