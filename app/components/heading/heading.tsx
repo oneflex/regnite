@@ -5,8 +5,7 @@ import styled from "@emotion/native";
 
 const Container = styled.View(() => ({
   flexDirection: "row",
-  paddingVertical: spacing[4],
-  paddingHorizontal: spacing[5],
+  borderColor: "red",
 }));
 
 interface TextProps {

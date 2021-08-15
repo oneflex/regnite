@@ -2,9 +2,9 @@ import { ViewStyle } from "react-native";
 
 export interface ErrorMessageProps {
   /**
-   * Text for heading
+   * The error message
    */
-  text: string;
+  children: string;
   /**
    * Container style overrides
    */

@@ -2,7 +2,7 @@ import React from "react";
 import { ViewStyle } from "react-native";
 import { useCredentialsFields } from "../../hooks/useCredentialsFields";
 import Heading from "../../components/heading/heading";
-import InputBox from "../../components/input-box/input-box";
+import Input from "../../components/input/input";
 import Screen from "../../components/screen/screen";
 import LoadingButton from "../../components/loading-button/loading-button";
 import { startSignUp } from "../../actions/auth/auth";
@@ -20,8 +20,8 @@ function SignUpWithEmailScreen(props: any) {
 
   return (
     <Screen>
-      <Heading text={translate("signUpWithEmailScreen.title")} />
-      <InputBox
+      <Heading>{translate("signUpWithEmailScreen.title")}</Heading>
+      <Input
         value={credentialsFields.email.value}
         onChangeText={credentialsFields.email.update}
         label={translate("common.email").toLocaleUpperCase()}
@@ -35,7 +35,7 @@ function SignUpWithEmailScreen(props: any) {
         }
         errorMessage={translate("errors.invalidEmail")}
       />
-      <InputBox
+      <Input
         value={credentialsFields.password.value}
         onChangeText={credentialsFields.password.update}
         label={translate("common.password").toLocaleUpperCase()}

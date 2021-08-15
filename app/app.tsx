@@ -1,6 +1,5 @@
 import "./utils/ignore-warnings";
 import React from "react";
-import { ViewStyle } from "react-native";
 import {
   SafeAreaProvider,
   initialWindowMetrics,
@@ -8,7 +7,6 @@ import {
 } from "react-native-safe-area-context";
 import { useFonts } from "expo-font";
 import { RootNavigator } from "./navigators";
-import { color } from "./theme";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import configureStore from "./store/configureStore";
@@ -21,7 +19,7 @@ const { store, persistor } = configureStore();
 
 const StyledSafeAreaView = styled(SafeAreaView)(props => ({
   flex: 1,
-  backgroundColor: props.theme.background,
+  backgroundColor: props.theme.background[100],
 }));
 
 function App() {

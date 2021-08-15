@@ -7,7 +7,7 @@ import styled from "@emotion/native";
 
 const Container = styled.View(props => ({
   flex: 1,
-  backgroundColor: props.theme.background,
+  backgroundColor: props.theme.background[100],
 }));
 
 const Screen: React.FC<ScreenProps> = props => {

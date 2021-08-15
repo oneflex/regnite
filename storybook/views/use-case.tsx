@@ -9,7 +9,6 @@ const Container = styled.View(props => ({
 
 const Header = styled.View(() => ({
   paddingTop: spacing[5],
-  paddingBottom: spacing[3],
   paddingHorizontal: spacing[5],
 }));
 

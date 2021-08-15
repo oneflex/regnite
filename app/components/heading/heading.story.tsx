@@ -29,11 +29,7 @@ storiesOf("Heading", module)
   ))
   .add("Behaviour", () => (
     <Story>
-      <UseCase
-        noPad
-        title="Heading"
-        description="Different scaling of the heading"
-      >
+      <UseCase title="Heading" description="Different scaling of the heading">
         <Heading>Heading Scale 1</Heading>
         <Heading scale={2}>Heading Scale 2</Heading>
         <Heading scale={3}>Heading Scale 3</Heading>

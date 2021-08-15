@@ -43,7 +43,7 @@ function Description(props: DescriptionProps) {
       color: "#242322",
     },
     fence: {
-      color: "black",
+      color: "#242322",
     },
   };
 
@@ -64,7 +64,14 @@ function PropsTable(props: PropsTableProps) {
       color: theme.text[100],
       fontFamily: typography.primary.regular,
     },
+    code_inline: {
+      color: "#242322",
+    },
+    fence: {
+      color: "#242322",
+    },
   };
+
   const table = `
   | Name | Description | Default |
   |----  | ----------- | ------- |
