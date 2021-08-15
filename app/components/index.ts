@@ -16,3 +16,4 @@ export * from "./error-message-s/error-message";
 export * from "./loading-button/loading-button";
 export * from "./reactive-theme-provider/reactive-theme-provider";
 export * from "./input/input";
+export * from "./button/button"
