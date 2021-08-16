@@ -1,8 +1,12 @@
-import { ViewStyle, ButtonProps as RNButtonProps } from "react-native";
+import { ViewStyle, TouchableOpacityProps } from "react-native";
 
-export interface ButtonProps extends RNButtonProps {
+export interface ButtonProps extends TouchableOpacityProps {
   /**
    * Container style overrides
    */
   style?: ViewStyle;
+  /**
+   * kinds of button
+   */
+  kind?: "primary" | "secondary" | "tertiary";
 }

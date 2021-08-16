@@ -19,7 +19,7 @@ const LoadingButton: React.FC<LoadingButtonProps> = props => {
   return (
     <View style={[CONTAINER, style]}>
       <Button {...buttonProps} />
-      {error && <ErrorMessage text={error} />}
+      {error && <ErrorMessage>{error}</ErrorMessage>}
     </View>
   );
 };

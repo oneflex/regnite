@@ -1,10 +1,10 @@
 import * as React from "react";
 import { NewTodoFormProps } from "./new-todo-form.props";
 import { View, ViewStyle, TextInput, TextStyle } from "react-native";
-import SubHeading from "../sub-heading/sub-heading";
 import { useState } from "react";
-import { color, spacing } from "../../theme";
+import { spacing } from "../../theme";
 import { connect } from "react-redux";
+import Heading from "../heading/heading";
 import { startAddTodo } from "../../actions/todos/todos";
 import { TodoData } from "../../actions/todos/types";
 import SubmitButton from "../submit-button/submit-button";
@@ -21,7 +21,7 @@ const ADD_TODO_FORM: ViewStyle = {
 
 const INPUT: TextStyle = {
   flex: 1,
-  backgroundColor: color.secondaryBackground,
+  backgroundColor: "white",
   fontSize: spacing[5],
   marginVertical: spacing[1],
   paddingHorizontal: spacing[3],
@@ -51,7 +51,8 @@ const NewTodoForm: React.FC<NewTodoFormProps> = props => {
 
   return (
     <View style={[CONTAINER, props.style]}>
-      <SubHeading text={translate("homeScreen.subtitle.newTask")} />
+      <Heading scale={2}>{translate("homeScreen.subtitle.newTask")}</Heading>
+
       <View style={ADD_TODO_FORM}>
         <TextInput
           style={INPUT}
@@ -59,12 +60,12 @@ const NewTodoForm: React.FC<NewTodoFormProps> = props => {
           onChangeText={setDescription}
         />
         <SubmitButton
-          color={color.primary}
+          color="blue"
           disabled={!description}
           handleClick={() => handleSubmitTodo("personal")}
         />
         <SubmitButton
-          color={color.secondaryPrimary}
+          color="blue"
           disabled={!description}
           handleClick={() => handleSubmitTodo("work")}
         />

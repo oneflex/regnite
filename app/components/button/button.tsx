@@ -1,19 +1,52 @@
 import * as React from "react";
-import { View, ViewStyle, Button as RNButton } from "react-native";
 import { ButtonProps } from "./button.props";
-import { spacing } from "../../theme";
+import styled from "@emotion/native";
+import { spacing, typography } from "../../theme";
 
-const CONTAINER: ViewStyle = {
-  paddingVertical: spacing[3],
-};
+interface ContainerProps {
+  disabled: boolean;
+}
+const Container = styled.View<ContainerProps>(props => ({
+  opacity: props.disabled ? 0.3 : 1,
+}));
+
+interface TouchableOpacityProps {
+  kind: "primary" | "secondary" | "tertiary";
+}
+const TouchableOpacity = styled.TouchableOpacity<TouchableOpacityProps>(
+  props => ({
+    backgroundColor:
+      props.kind == "primary"
+        ? props.theme.text[100]
+        : props.theme.background[100],
+    borderColor: props.theme.text[100],
+    borderWidth: props.kind == "tertiary" ? 0 : 3,
+    padding: spacing[3],
+    flexDirection: props.kind == "tertiary" ? "row" : "column",
+    alignSelf: props.kind == "tertiary" ? "flex-start" : "stretch",
+  }),
+);
+
+interface TextProps {
+  kind: "primary" | "secondary" | "tertiary";
+}
+const Text = styled.Text<TextProps>(props => ({
+  color:
+    props.kind == "primary"
+      ? props.theme.background[100]
+      : props.theme.text[100],
+  fontFamily: typography.primary.bold,
+  textAlign: "center",
+}));
 
 const Button: React.FC<ButtonProps> = props => {
-  const { style, ...buttonProps } = props;
-
+  const { disabled, ...buttonProps } = props;
   return (
-    <View style={[CONTAINER, style]}>
-      <RNButton {...buttonProps} />
-    </View>
+    <Container disabled={disabled}>
+      <TouchableOpacity kind={props.kind} {...buttonProps} disabled={disabled}>
+        <Text kind={props.kind}> {props.children}</Text>
+      </TouchableOpacity>
+    </Container>
   );
 };
 

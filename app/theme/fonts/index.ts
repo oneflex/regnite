@@ -1,4 +1,4 @@
 export default {
-  "Nunito-Regular": require("../../../assets/fonts/Nunito-Regular.ttf"),
-  "Nunito-Bold": require("../../../assets/fonts/Nunito-Bold.ttf"),
+  "Merriweather-Regular": require("../../../assets/fonts/Merriweather-Regular.ttf"),
+  "Merriweather-Bold": require("../../../assets/fonts/Merriweather-Bold.ttf"),
 };

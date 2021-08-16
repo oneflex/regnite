@@ -1,28 +1,34 @@
 import * as React from "react";
 import { HeadingProps } from "./Heading.props";
-import { TextStyle, View, ViewStyle, Text } from "react-native";
-import { color, spacing, typography } from "../../theme";
+import { spacing, typography } from "../../theme";
+import styled from "@emotion/native";
 
-const CONTAINER: ViewStyle = {
+const Container = styled.View(() => ({
   flexDirection: "row",
-  paddingVertical: spacing[4],
-  paddingHorizontal: spacing[5],
-};
+  borderColor: "red",
+}));
 
-const TEXT: TextStyle = {
+interface TextProps {
+  fontSize: number;
+}
+const Text = styled.Text<TextProps>(props => ({
   fontFamily: typography.primary.bold,
-  fontSize: 35,
-  color: color.text,
+  fontSize: props.fontSize,
+  color: props.theme.text[100],
   fontWeight: "bold",
-};
+}));
 
-const Heading: React.FC<HeadingProps> = props => {
-  const { style } = props;
+const Heading: React.FC<HeadingProps> = ({ children, scale = 1, style }) => {
+  const fontSize = {
+    1: spacing[6],
+    2: spacing[5],
+    3: spacing[4],
+  };
 
   return (
-    <View style={[CONTAINER, style]}>
-      <Text style={TEXT}>{props.text}</Text>
-    </View>
+    <Container style={style}>
+      <Text fontSize={fontSize[scale]}>{children}</Text>
+    </Container>
   );
 };
 

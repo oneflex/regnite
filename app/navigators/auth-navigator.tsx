@@ -6,6 +6,7 @@ import {
   SignUpWithEmailScreen,
 } from "../screens";
 import { color } from "../theme";
+import { useTheme } from "@emotion/react";
 
 export type PrimaryParamList = {
   Welcome: undefined;
@@ -16,10 +17,12 @@ export type PrimaryParamList = {
 const Stack = createStackNavigator<PrimaryParamList>();
 
 export function AuthNavigator() {
+  const theme = useTheme();
+
   return (
     <Stack.Navigator
       screenOptions={{
-        cardStyle: { backgroundColor: color.background },
+        cardStyle: { backgroundColor: theme.background },
         headerShown: false,
       }}
       initialRouteName="Welcome"

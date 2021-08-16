@@ -1,6 +1,6 @@
 import { TextInputProps, ViewStyle } from "react-native";
 
-export interface InputBoxProps extends TextInputProps {
+export interface InputProps extends TextInputProps {
   /**
    * is input valid
    */

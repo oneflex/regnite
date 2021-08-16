@@ -7,13 +7,13 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Heading from "../../components/heading/heading";
-import InputBox from "../../components/input-box/input-box";
-import { color, spacing } from "../../theme";
+import Input from "../../components/input/input";
 import Screen from "../../components/screen/screen";
 import LoadingButton from "../../components/loading-button/loading-button";
 import { startSignIn } from "../../actions/auth/auth";
 import { connect } from "react-redux";
 import { translate } from "../../i18n";
+import { spacing } from "../../theme";
 
 const LOADING_BUTTON: ViewStyle = {
   paddingVertical: spacing[4],
@@ -31,7 +31,7 @@ const SIGN_UP_TEXT: TextStyle = {
 
 const SIGN_UP_BUTTON: TextStyle = {
   marginLeft: spacing[1],
-  color: color.secondaryPrimary,
+  color: "white",
 };
 
 function SignInWithEmailScreen(props: any) {
@@ -40,8 +40,8 @@ function SignInWithEmailScreen(props: any) {
 
   return (
     <Screen>
-      <Heading text={translate("signInWithEmailScreen.title")} />
-      <InputBox
+      <Heading>{translate("signInWithEmailScreen.title")}</Heading>
+      <Input
         value={email}
         onChangeText={setEmail}
         placeholder={translate("common.placeholder.email")}
@@ -51,7 +51,7 @@ function SignInWithEmailScreen(props: any) {
         textContentType="emailAddress"
         autoCapitalize="none"
       />
-      <InputBox
+      <Input
         value={password}
         onChangeText={setPassword}
         placeholder={translate("common.placeholder.password")}

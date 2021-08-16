@@ -24,7 +24,7 @@ const BUTTONS: ViewStyle = {
 function WelcomeScreen(props: any) {
   return (
     <Screen>
-      <Heading text={translate("welcomeScreen.title")}></Heading>
+      <Heading>{translate("welcomeScreen.title")}</Heading>
       <View style={BUTTONS}>
         <Button
           title={translate("welcomeScreen.signInMethods.email")}
@@ -44,7 +44,7 @@ function WelcomeScreen(props: any) {
         ></Button>
         {props.error && (
           <View style={ERROR}>
-            <ErrorMessage text={props.error} />
+            <ErrorMessage>{props.error}</ErrorMessage>
           </View>
         )}
       </View>

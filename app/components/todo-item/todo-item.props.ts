@@ -6,11 +6,11 @@ export interface TodoProps {
    */
   handleClickCheckbox: (id: string, isCompleted: boolean) => void;
   /**
-   * remove an iten
+   * remove an item
    */
   handleClickRemove: (id: string) => void;
   /**
-   * The type of thr todo
+   * The type of the todo
    */
   type: "personal" | "work";
   /**

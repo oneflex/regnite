@@ -6,7 +6,7 @@ import { color, spacing } from "../../theme";
 const SUBMIT_BUTTON: ViewStyle = {
   justifyContent: "center",
   alignItems: "center",
-  backgroundColor: color.secondaryBackground,
+  backgroundColor: "white",
   marginVertical: spacing[1],
   marginLeft: spacing[3],
   width: 50,
@@ -24,7 +24,7 @@ const SUBMIT_BUTTON: ViewStyle = {
 
 const SUBMIT_BUTTON_TEXT: TextStyle = {
   fontSize: spacing[4],
-  color: color.text,
+  color: "white",
 };
 
 const SubmitButton: React.FC<SubmitButtonProps> = props => {
