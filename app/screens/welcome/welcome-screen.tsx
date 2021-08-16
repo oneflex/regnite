@@ -13,6 +13,7 @@ import ErrorMessage from "../../components/error-message/error-message";
 import { spacing } from "../../theme";
 import { translate } from "../../i18n";
 import styled from "@emotion/native";
+import { WelcomeProps } from "./welcome";
 
 const Container = styled.View({
   paddingHorizontal: spacing[5],
@@ -31,7 +32,7 @@ const Error = styled.View({
   alignSelf: "center",
 });
 
-function WelcomeScreen(props: any) {
+function WelcomeScreen(props: WelcomeProps) {
   return (
     <Screen>
       <Container>

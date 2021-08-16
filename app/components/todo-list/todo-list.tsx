@@ -47,7 +47,7 @@ export const TodoList: React.FC<TodoListProps> = props => {
       </SubHeading>
       <Todos
         data={props.todos}
-        renderItem={({ item }): any => <TodoItem {...item} />}
+        renderItem={(todo: any) => <TodoItem {...todo.item} />}
         keyExtractor={(todo: Todo): string => todo.id}
         contentContainerStyle={TODOS_CONTAINER}
       />

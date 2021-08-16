@@ -55,7 +55,6 @@ interface DeleteButtonProps {
 }
 const DeleteButton = styled(Button)<DeleteButtonProps>(props => ({
   padding: spacing[5],
-  // marginLeft: spacing[2],
   backgroundColor:
     props.category === "personal"
       ? props.theme.primary[100]
@@ -64,6 +63,8 @@ const DeleteButton = styled(Button)<DeleteButtonProps>(props => ({
     props.category === "personal"
       ? props.theme.primary[100]
       : props.theme.primary[400],
+  height: "100%",
+  justifyContent: "center",
 }));
 
 export const TodoItem: React.FC<TodoProps> = props => {

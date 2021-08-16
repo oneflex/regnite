@@ -28,8 +28,6 @@ export function MainNavigator() {
  *
  * Anything not on this list will be a standard `back` action in
  * react-navigation.
- *
- * `canExit` is used in ./app/app.tsx in the `useBackButtonHandler` hook.
  */
 const exitRoutes = ["main"];
 export const canExit = (routeName: string) => exitRoutes.includes(routeName);

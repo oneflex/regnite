@@ -10,6 +10,7 @@ import { spacing } from "../../theme";
 import { translate } from "../../i18n";
 import styled from "@emotion/native";
 import Button from "../../components/button/button";
+import { HomeProps } from "./home.props";
 
 const Container = styled.View(() => ({
   flex: 1,
@@ -25,7 +26,7 @@ const LogoutButton = styled(Button)(() => ({
   marginVertical: spacing[3],
 }));
 
-function HomeScreen(props: any) {
+function HomeScreen(props: HomeProps) {
   return (
     <Screen>
       <Container>

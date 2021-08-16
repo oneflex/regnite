@@ -30,33 +30,27 @@ storiesOf("Button", module)
   .add("Behaviour", () => (
     <Story>
       <UseCase title="Primary title">
-        <Button onPress={() => {}} kind="primary">
-          Primary
-        </Button>
+        <Button kind="primary">Primary</Button>
       </UseCase>
       <UseCase title="Secondary title">
-        <Button onPress={() => {}} kind="secondary">
-          Secondary
-        </Button>
+        <Button kind="secondary">Secondary</Button>
       </UseCase>
       <UseCase title="Tertiary title">
-        <Button onPress={() => {}} kind="tertiary">
-          Tertiary
-        </Button>
+        <Button kind="tertiary">Tertiary</Button>
       </UseCase>
       <UseCase title="Disabled primary button">
-        <Button disabled onPress={() => {}} kind="primary">
-          I am diabled
+        <Button disabled kind="primary">
+          I am disabled
         </Button>
       </UseCase>
       <UseCase title="Disabled secondary button">
-        <Button disabled onPress={() => {}} kind="secondary">
-          I am also diabled
+        <Button disabled kind="secondary">
+          I am also disabled
         </Button>
       </UseCase>
       <UseCase title="Disabled tertiary button">
-        <Button disabled onPress={() => {}} kind="tertiary">
-          I am also diabled
+        <Button disabled kind="tertiary">
+          I am also disabled
         </Button>
       </UseCase>
     </Story>

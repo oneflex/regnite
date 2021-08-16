@@ -1,5 +1,4 @@
 import React from "react";
-import { ViewStyle } from "react-native";
 import { useCredentialsFields } from "../../hooks/useCredentialsFields";
 import Heading from "../../components/heading/heading";
 import Input from "../../components/input/input";
@@ -10,6 +9,7 @@ import { connect } from "react-redux";
 import { spacing } from "../../theme";
 import { translate } from "../../i18n";
 import styled from "@emotion/native";
+import { SignUpWithEmailProps } from "./sign-up-with-email";
 
 const Container = styled.View({
   paddingHorizontal: spacing[5],
@@ -27,17 +27,7 @@ const SignUpButton = styled(LoadingButton)({
   paddingVertical: spacing[3],
 });
 
-const PaddLoadingButton = styled(LoadingButton)({
-  paddingVertical: spacing[3],
-  paddingHorizontal: spacing[5],
-});
-
-const PaddInput = styled(Input)({
-  paddingVertical: spacing[1],
-  paddingHorizontal: spacing[5],
-});
-
-function SignUpWithEmailScreen(props: any) {
+function SignUpWithEmailScreen(props: SignUpWithEmailProps) {
   const credentialsFields = useCredentialsFields();
 
   return (

@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { validateEmail, validatePassword } from "../utils/validate";
 import { debounce } from "debounce";
+import { timing } from "../theme";
 
 export function useCredentialsFields() {
   const [email, setEmail] = useState("");
@@ -16,7 +17,7 @@ export function useCredentialsFields() {
   const updateEmailIsValid = useCallback(
     debounce(
       (email: string) => setEmailIsValid(!email || validateEmail(email)),
-      emailIsValid ? 1000 : 200,
+      emailIsValid ? timing.long : timing.quick,
     ),
     [emailIsValid],
   );

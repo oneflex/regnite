@@ -5,8 +5,6 @@ import {
   SignInWithEmailScreen,
   SignUpWithEmailScreen,
 } from "../screens";
-import { color } from "../theme";
-import { useTheme } from "@emotion/react";
 
 export type PrimaryParamList = {
   Welcome: undefined;
@@ -17,12 +15,10 @@ export type PrimaryParamList = {
 const Stack = createStackNavigator<PrimaryParamList>();
 
 export function AuthNavigator() {
-  const theme = useTheme();
-
   return (
     <Stack.Navigator
       screenOptions={{
-        cardStyle: { backgroundColor: theme.background },
+        cardStyle: { backgroundColor: "transparent" },
         headerShown: false,
       }}
       initialRouteName="Welcome"
@@ -40,8 +36,6 @@ export function AuthNavigator() {
  *
  * Anything not on this list will be a standard `back` action in
  * react-navigation.
- *
- * `canExit` is used in ./app/app.tsx in the `useBackButtonHandler` hook.
  */
 const exitRoutes = ["signIn"];
 export const canExit = (routeName: string) => exitRoutes.includes(routeName);

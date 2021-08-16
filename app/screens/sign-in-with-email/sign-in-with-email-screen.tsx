@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import { translate } from "../../i18n";
 import { spacing } from "../../theme";
 import styled from "@emotion/native";
+import { SignInWithEmailProps } from "./sign-in-with-email";
 
 const Container = styled.View({
   paddingHorizontal: spacing[5],
@@ -42,7 +43,7 @@ const SignUpButton = styled.Text(props => ({
   fontSize: spacing[4],
 }));
 
-function SignInWithEmailScreen(props: any) {
+function SignInWithEmailScreen(props: SignInWithEmailProps) {
   const [email, setEmail] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
 

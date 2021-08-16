@@ -13,6 +13,5 @@ export interface TodoListProps {
   /**
    * Container style overrides
    */
-
   style?: ViewStyle;
 }

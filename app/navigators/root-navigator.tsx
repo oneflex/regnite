@@ -19,7 +19,7 @@ const RootStack = (props: any) => {
   return (
     <Stack.Navigator
       screenOptions={{
-        cardStyle: { backgroundColor: "white" },
+        cardStyle: { backgroundColor: "transparent" },
         headerShown: false,
       }}
     >
