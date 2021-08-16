@@ -5,9 +5,7 @@ import { spacing, typography } from "../../theme";
 import Heading from "../heading/heading";
 import ErrorMessage from "../error-message/error-message";
 
-const Container = styled.View(() => ({
-  marginVertical: spacing[1],
-}));
+const Container = styled.View(() => ({}));
 
 const Label = styled(Heading)(() => ({
   paddingVertical: spacing[3],
@@ -31,9 +29,9 @@ const Input: React.FC<InputProps> = props => {
   const { style, label, error, errorMessage, ...textInputProps } = props;
 
   return (
-    <Container style={style}>
+    <Container>
       {label && <Label scale={2}>{label}</Label>}
-      <TextInput error={error} {...textInputProps} />
+      <TextInput style={style} error={error} {...textInputProps} />
       {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
     </Container>
   );

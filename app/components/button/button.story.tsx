@@ -8,18 +8,17 @@ import {
   PropsData,
 } from "../../../storybook/views";
 import Button from "./button";
-import { theme } from "@storybook/react-native/dist/preview/components/Shared/theme";
-import { primary } from "../../theme";
 
 declare let module: any;
 
 const description = `
   This is a button component that allows diffrent kinds of buttons.
-  The button kinds are \`Primary\`, \`Secondary\`, \`Tertiary\`.
+  The button kinds are \`primary\`, \`secondary\`, \`tertiary\`.
 `;
 
 const propsData: PropsData = [
-  ["kind", "The button kind `Primary | Secondary | Tertiary`", "Primary"],
+  ["kind", "The button kind `primary | secondary | tertiary`", "primary"],
+  ["fontSize", "the button text font size `number`", "14"],
   ["style", "Container style overrides `ViewStyle`", "-"],
 ];
 

@@ -1,11 +1,4 @@
 import React from "react";
-import {
-  View,
-  ViewStyle,
-  TextStyle,
-  TouchableOpacity,
-  Text,
-} from "react-native";
 import TodoList from "../../components/todo-list/todo-list";
 import Heading from "../../components/heading/heading";
 import NewTodoForm from "../../components/new-todo-form/new-todo-form";
@@ -15,29 +8,35 @@ import { startSignOut } from "../../actions/auth/auth";
 import { connect } from "react-redux";
 import { spacing } from "../../theme";
 import { translate } from "../../i18n";
+import styled from "@emotion/native";
+import Button from "../../components/button/button";
 
-const CONTAINER: ViewStyle = { flex: 1 };
+const Container = styled.View(() => ({
+  flex: 1,
+}));
 
-const LOGOUT_BUTTON: TextStyle = {
+const WelcomeTitle = styled(Heading)(() => ({
   paddingHorizontal: spacing[5],
-};
+  marginTop: spacing[5],
+}));
 
-const LOGOUT_BUTTON_TEXT: TextStyle = {
-  fontSize: spacing[6],
-};
+const LogoutButton = styled(Button)(() => ({
+  marginHorizontal: spacing[5],
+  marginVertical: spacing[3],
+}));
 
 function HomeScreen(props: any) {
   return (
     <Screen>
-      <View style={CONTAINER}>
-        <TouchableOpacity style={LOGOUT_BUTTON} onPress={() => props.signOut()}>
-          <Text style={LOGOUT_BUTTON_TEXT}>{"👋🏻"}</Text>
-        </TouchableOpacity>
-        <Heading text={`${translate("homeScreen.title")}, ${props.name}!`} />
+      <Container>
+        <LogoutButton kind="secondary">Log Out</LogoutButton>
+        <WelcomeTitle>{`${translate("homeScreen.title")}, ${
+          props.name
+        }!`}</WelcomeTitle>
         <FiltersForm />
         <NewTodoForm />
-        <TodoList />
-      </View>
+        {/* <TodoList /> */}
+      </Container>
     </Screen>
   );
 }

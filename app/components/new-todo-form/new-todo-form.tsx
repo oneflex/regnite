@@ -1,76 +1,93 @@
 import * as React from "react";
 import { NewTodoFormProps } from "./new-todo-form.props";
-import { View, ViewStyle, TextInput, TextStyle } from "react-native";
 import { useState } from "react";
 import { spacing } from "../../theme";
 import { connect } from "react-redux";
 import Heading from "../heading/heading";
 import { startAddTodo } from "../../actions/todos/todos";
 import { TodoData } from "../../actions/todos/types";
-import SubmitButton from "../submit-button/submit-button";
 import { translate } from "../../i18n";
+import styled from "@emotion/native";
+import Input from "../input/input";
+import Button from "../button/button";
+import { Category } from "../../types/filters";
 
-const CONTAINER: ViewStyle = {
+const Container = styled.View(() => ({
   paddingHorizontal: spacing[5],
-};
+  paddingVertical: spacing[2],
+}));
 
-const ADD_TODO_FORM: ViewStyle = {
+const SubHeading = styled(Heading)(() => ({
+  paddingBottom: spacing[2],
+}));
+
+const Form = styled.View(() => ({
   flexDirection: "row",
-  paddingBottom: spacing[3],
-};
+}));
 
-const INPUT: TextStyle = {
+const InputContainer = styled.View(() => ({
   flex: 1,
-  backgroundColor: "white",
+  paddingRight: spacing[1],
+}));
+
+const TextInput = styled(Input)(() => ({
   fontSize: spacing[5],
-  marginVertical: spacing[1],
-  paddingHorizontal: spacing[3],
-  height: 50,
-  borderRadius: 15,
-  shadowColor: "#000",
-  shadowOffset: {
-    width: 0,
-    height: 2,
-  },
-  shadowOpacity: 0.09,
-  shadowRadius: 2.65,
-  elevation: 4,
-};
+  paddingVertical: spacing[2],
+}));
+
+interface SubmitButtonProps {
+  category: Category;
+}
+const SubmitButton = styled(Button)<SubmitButtonProps>(props => ({
+  marginHorizontal: spacing[1],
+  flex: 1,
+  backgroundColor:
+    props.category === "personal"
+      ? props.theme.primary[100]
+      : props.theme.primary[400],
+  borderColor:
+    props.category === "personal"
+      ? props.theme.primary[100]
+      : props.theme.primary[400],
+}));
 
 const NewTodoForm: React.FC<NewTodoFormProps> = props => {
   const [description, setDescription] = useState<string>("");
 
   function handleSubmitTodo(type: "work" | "personal") {
     props.addTodo({
-      description: description,
       isCompleted: false,
+      description,
       type,
     });
     setDescription("");
   }
 
   return (
-    <View style={[CONTAINER, props.style]}>
-      <Heading scale={2}>{translate("homeScreen.subtitle.newTask")}</Heading>
-
-      <View style={ADD_TODO_FORM}>
-        <TextInput
-          style={INPUT}
-          value={description}
-          onChangeText={setDescription}
-        />
+    <Container style={props.style}>
+      <SubHeading scale={3}>
+        {translate("homeScreen.subtitle.newTask")}
+      </SubHeading>
+      <Form>
+        <InputContainer>
+          <TextInput value={description} onChangeText={setDescription} />
+        </InputContainer>
         <SubmitButton
-          color="blue"
+          category="personal"
           disabled={!description}
-          handleClick={() => handleSubmitTodo("personal")}
-        />
+          onPress={() => handleSubmitTodo("personal")}
+        >
+          +
+        </SubmitButton>
         <SubmitButton
-          color="blue"
+          category="work"
           disabled={!description}
-          handleClick={() => handleSubmitTodo("work")}
-        />
-      </View>
-    </View>
+          onPress={() => handleSubmitTodo("work")}
+        >
+          +
+        </SubmitButton>
+      </Form>
+    </Container>
   );
 };
 

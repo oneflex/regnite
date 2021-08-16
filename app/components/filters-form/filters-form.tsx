@@ -1,38 +1,37 @@
 import * as React from "react";
 import { FiltersFormProps } from "./filters-form.props";
-import { View, ViewStyle, FlatList } from "react-native";
-import { color, spacing } from "../../theme";
+import { View, ViewStyle } from "react-native";
+import { spacing } from "../../theme";
 import { Category, Sort } from "../../types/filters";
 import CategoryButton from "../category-button/category-button";
-import SortButton from "../sort-button/sort-button";
 import { connect } from "react-redux";
 import { updateFilterBy, updateSortBy } from "../../actions/filters/filters";
 import { calculateTodosCount } from "../../selectors/todos";
 import { translate } from "../../i18n";
-
-const CONTAINER: ViewStyle = {};
+import styled from "@emotion/native";
+import Button from "../button/button";
 
 const TODO_TYPES_CONTAINER: ViewStyle = {
-  paddingRight: spacing[6],
+  paddingHorizontal: spacing[6],
 };
 
-const TODO_TYPES: ViewStyle = {
-  paddingHorizontal: spacing[5],
-};
-
-const SORT_OPTIONS: ViewStyle = {
-  flexDirection: "row",
+const TodoTypes = styled.FlatList(() => ({
   paddingVertical: spacing[3],
-  paddingHorizontal: spacing[5],
-};
+}));
+
+const SortOptions = styled.View(() => ({
+  flexDirection: "row",
+  paddingVertical: spacing[1],
+  marginLeft: spacing[5],
+}));
+
+const SortButton = styled(Button)(() => ({}));
 
 const FiltersForm: React.FC<FiltersFormProps> = props => {
-  const { style } = props;
-
   return (
-    <View style={[CONTAINER, style]}>
-      <FlatList
-        data={["personal", "all", "work"]}
+    <View style={props.style}>
+      <TodoTypes
+        data={["all", "personal", "work"]}
         renderItem={(data: any) => {
           const category: Category = data.item;
           return (
@@ -41,26 +40,29 @@ const FiltersForm: React.FC<FiltersFormProps> = props => {
               text={translate(`todos.categories.${category}`)}
               todosCompleted={props.todosCount[category].completed}
               todosNumber={props.todosCount[category].total}
-              color={color.category[category]}
               handleClick={() => props.updateFilterBy(category)}
+              category={category}
             />
           );
         }}
         keyExtractor={(category: Category) => category}
         horizontal={true}
-        style={TODO_TYPES}
         contentContainerStyle={TODO_TYPES_CONTAINER}
       />
-      <View style={SORT_OPTIONS}>
+      <SortOptions>
         <SortButton
-          text={translate("sortBy.asc")}
-          handleClick={() => props.updateSortBy("nameAsc")}
-        />
+          kind="tertiary"
+          onPress={() => props.updateSortBy("nameAsc")}
+        >
+          {translate("sortBy.asc")}
+        </SortButton>
         <SortButton
-          text={translate("sortBy.des")}
-          handleClick={() => props.updateSortBy("nameDes")}
-        />
-      </View>
+          kind="tertiary"
+          onPress={() => props.updateSortBy("nameDes")}
+        >
+          {translate("sortBy.des")}
+        </SortButton>
+      </SortOptions>
     </View>
   );
 };
