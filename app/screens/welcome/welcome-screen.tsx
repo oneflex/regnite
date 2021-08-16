@@ -12,42 +12,44 @@ import {
 import ErrorMessage from "../../components/error-message/error-message";
 import { spacing } from "../../theme";
 import { translate } from "../../i18n";
+import styled from "@emotion/native";
 
-const ERROR: ViewStyle = {
+const Error = styled.View({
   paddingHorizontal: spacing[5],
-};
+});
 
-const BUTTONS: ViewStyle = {
-  alignItems: "center",
-};
+const MarginButoon = styled(Button)(props => ({
+  margin: spacing[3],
+}));
+
+const PadHeading = styled(Heading)({
+  padding: spacing[3],
+});
 
 function WelcomeScreen(props: any) {
   return (
     <Screen>
-      <Heading>{translate("welcomeScreen.title")}</Heading>
-      <View style={BUTTONS}>
-        <Button
-          title={translate("welcomeScreen.signInMethods.email")}
-          onPress={() => props.navigation.push("SignInWithEmail")}
-        ></Button>
-        <Button
-          title={translate("welcomeScreen.signInMethods.anonymous")}
-          onPress={props.signInAnonymously}
-        ></Button>
-        <Button
-          title={translate("welcomeScreen.signInMethods.gmail")}
-          onPress={props.signInWithGoogle}
-        ></Button>
-        <Button
-          title={translate("welcomeScreen.signInMethods.facebook")}
-          onPress={props.signInWithFacebook}
-        ></Button>
-        {props.error && (
-          <View style={ERROR}>
-            <ErrorMessage>{props.error}</ErrorMessage>
-          </View>
-        )}
-      </View>
+      <PadHeading>{translate("welcomeScreen.title")}</PadHeading>
+      <MarginButoon
+        onPress={() => props.navigation.push("SignInWithEmail")}
+        kind="primary"
+      >
+        {translate("welcomeScreen.signInMethods.email")}
+      </MarginButoon>
+      <MarginButoon onPress={props.signInAnonymously} kind="secondary">
+        {translate("welcomeScreen.signInMethods.anonymous")}
+      </MarginButoon>
+      <MarginButoon onPress={props.signInWithGoogle} kind="secondary">
+        {translate("welcomeScreen.signInMethods.gmail")}
+      </MarginButoon>
+      <MarginButoon onPress={props.signInWithFacebook} kind="secondary">
+        {translate("welcomeScreen.signInMethods.facebook")}
+      </MarginButoon>
+      {props.error && (
+        <Error>
+          <ErrorMessage>{props.error}</ErrorMessage>
+        </Error>
+      )}
     </Screen>
   );
 }
