@@ -1,30 +1,33 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { TodoListProps } from "./todo-list.props";
-import { View, ViewStyle, FlatList, ActivityIndicator } from "react-native";
-import SubHeading from "../../components/sub-heading/sub-heading";
-import TodoItem from "../todo-item/todo-item";
+import { ViewStyle, ActivityIndicator } from "react-native";
+import styled from "@emotion/native";
 import { Todo } from "../../types";
 import { filterTodos } from "../../selectors/todos";
 import { startSetTodos } from "../../actions/todos/todos";
 import { spacing } from "../../theme";
 import { translate } from "../../i18n";
+import Heading from "../heading/heading";
+import TodoItem from "../todo-item/todo-item";
 
-const CONTAINER: ViewStyle = { flex: 1 };
+const Container = styled.View(() => ({
+  flex: 1,
+}));
 
-const HEADING: ViewStyle = {
+const SubHeading = styled(Heading)(() => ({
   paddingHorizontal: spacing[5],
-};
+}));
+
+const Todos = styled.FlatList(() => ({
+  flex: 1,
+}));
 
 const TODOS_CONTAINER: ViewStyle = {
   paddingBottom: spacing[5],
 };
 
-const TODOS: ViewStyle = {
-  flex: 1,
-};
-
-const TodoList: React.FC<TodoListProps> = props => {
+export const TodoList: React.FC<TodoListProps> = props => {
   const { style } = props;
 
   const [isLoading, setIsLoading] = React.useState(true);
@@ -36,19 +39,17 @@ const TodoList: React.FC<TodoListProps> = props => {
   if (isLoading) return <ActivityIndicator />;
 
   return (
-    <View style={[CONTAINER, style]}>
-      <SubHeading
-        text={translate("homeScreen.subtitle.todayTasks")}
-        style={HEADING}
-      />
-      <FlatList
+    <Container style={style}>
+      <SubHeading scale={2}>
+        {translate("homeScreen.subtitle.todayTasks")}
+      </SubHeading>
+      <Todos
         data={props.todos}
         renderItem={({ item }): any => <TodoItem {...item} />}
         keyExtractor={(todo: Todo): string => todo.id}
-        style={TODOS}
         contentContainerStyle={TODOS_CONTAINER}
       />
-    </View>
+    </Container>
   );
 };
 
