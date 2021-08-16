@@ -1,7 +1,7 @@
 import * as React from "react";
 import { FiltersFormProps } from "./filters-form.props";
 import { View, ViewStyle, FlatList } from "react-native";
-import { color, spacing } from "../../theme";
+import { red, spacing } from "../../theme";
 import { Category, Sort } from "../../types/filters";
 import CategoryButton from "../category-button/category-button";
 import SortButton from "../sort-button/sort-button";
@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import { updateFilterBy, updateSortBy } from "../../actions/filters/filters";
 import { calculateTodosCount } from "../../selectors/todos";
 import { translate } from "../../i18n";
+import { theme } from "@storybook/react-native/dist/preview/components/Shared/theme";
 
 const CONTAINER: ViewStyle = {};
 
@@ -41,7 +42,7 @@ const FiltersForm: React.FC<FiltersFormProps> = props => {
               text={translate(`todos.categories.${category}`)}
               todosCompleted={props.todosCount[category].completed}
               todosNumber={props.todosCount[category].total}
-              color={color.category[category]}
+              color="red"
               handleClick={() => props.updateFilterBy(category)}
             />
           );

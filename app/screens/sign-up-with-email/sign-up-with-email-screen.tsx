@@ -9,11 +9,17 @@ import { startSignUp } from "../../actions/auth/auth";
 import { connect } from "react-redux";
 import { spacing } from "../../theme";
 import { translate } from "../../i18n";
+import styled from "@emotion/native";
 
-const LOADING_BUTTON: ViewStyle = {
-  paddingVertical: spacing[4],
-  paddingHorizontal: spacing[6],
-};
+const PaddLoadingButton = styled(LoadingButton)({
+  paddingVertical: spacing[3],
+  paddingHorizontal: spacing[5],
+});
+
+const PaddInput = styled(Input)({
+  paddingVertical: spacing[1],
+  paddingHorizontal: spacing[5],
+});
 
 function SignUpWithEmailScreen(props: any) {
   const credentialsFields = useCredentialsFields();
@@ -21,7 +27,7 @@ function SignUpWithEmailScreen(props: any) {
   return (
     <Screen>
       <Heading>{translate("signUpWithEmailScreen.title")}</Heading>
-      <Input
+      <PaddInput
         value={credentialsFields.email.value}
         onChangeText={credentialsFields.email.update}
         label={translate("common.email").toLocaleUpperCase()}
@@ -35,7 +41,7 @@ function SignUpWithEmailScreen(props: any) {
         }
         errorMessage={translate("errors.invalidEmail")}
       />
-      <Input
+      <PaddInput
         value={credentialsFields.password.value}
         onChangeText={credentialsFields.password.update}
         label={translate("common.password").toLocaleUpperCase()}
@@ -49,11 +55,9 @@ function SignUpWithEmailScreen(props: any) {
         }
         errorMessage={translate("errors.invalidPassword")}
       />
-      <LoadingButton
-        style={LOADING_BUTTON}
+      <PaddLoadingButton
         isLoading={props.isLoading}
         error={props.error}
-        title={translate("common.signUp")}
         onPress={() =>
           props.signUp(
             credentialsFields.email.value,
@@ -66,7 +70,9 @@ function SignUpWithEmailScreen(props: any) {
           !credentialsFields.password.isValid ||
           !credentialsFields.email.isValid
         }
-      />
+      >
+        {translate("common.signUp")}
+      </PaddLoadingButton>
     </Screen>
   );
 }
