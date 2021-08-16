@@ -29,7 +29,9 @@ function HomeScreen(props: any) {
   return (
     <Screen>
       <Container>
-        <LogoutButton kind="secondary">Log Out</LogoutButton>
+        <LogoutButton kind="secondary" onPress={() => props.signOut()}>
+          Log Out
+        </LogoutButton>
         <WelcomeTitle>{`${translate("homeScreen.title")}, ${
           props.name
         }!`}</WelcomeTitle>

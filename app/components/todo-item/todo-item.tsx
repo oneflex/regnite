@@ -7,6 +7,7 @@ import Checkbox from "../checkbox/checkbox";
 import { startRemoveTodo, startUpdateTodo } from "../../actions/todos/todos";
 import { useTheme } from "@emotion/react";
 import Button from "../button/button";
+import { Category } from "../../types/filters";
 
 const Container = styled.View({
   flex: 1,
@@ -15,7 +16,10 @@ const Container = styled.View({
   marginVertical: spacing[1],
 });
 
-const Todo = styled.View(props => ({
+interface TodoContainerProps {
+  category: Category;
+}
+const TodoContainer = styled.View<TodoContainerProps>(props => ({
   flex: 1,
   flexDirection: "row",
   padding: spacing[5],
@@ -46,7 +50,10 @@ const Description = styled.Text<DescriptionProps>(props => ({
   opacity: props.isCompleted ? 0.3 : 1,
 }));
 
-const DeleteButton = styled(Button)(props => ({
+interface DeleteButtonProps {
+  category: Category;
+}
+const DeleteButton = styled(Button)<DeleteButtonProps>(props => ({
   padding: spacing[5],
   // marginLeft: spacing[2],
   backgroundColor:
@@ -65,7 +72,7 @@ export const TodoItem: React.FC<TodoProps> = props => {
 
   return (
     <Container>
-      <Todo category={type} style={style}>
+      <TodoContainer category={type} style={style}>
         <CheckboxContainer>
           <Checkbox
             isChecked={isCompleted}
@@ -79,14 +86,13 @@ export const TodoItem: React.FC<TodoProps> = props => {
         <DescriptionContainer>
           <Description isCompleted={isCompleted}>{description}</Description>
         </DescriptionContainer>
-        {/* <TouchableOpacity
-        style={REMOVE_BUTTON}
+      </TodoContainer>
+      <DeleteButton
         onPress={() => props.handleClickRemove(id)}
+        category={type}
+        kind="primary"
+        fontSize={30}
       >
-        <Text style={REMOVE_BUTTON_TEXT}></Text>
-      </TouchableOpacity> */}
-      </Todo>
-      <DeleteButton category={type} kind="primary" fontSize={30}>
         🗑
       </DeleteButton>
     </Container>
