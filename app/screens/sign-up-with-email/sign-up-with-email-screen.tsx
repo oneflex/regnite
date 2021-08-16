@@ -11,6 +11,22 @@ import { spacing } from "../../theme";
 import { translate } from "../../i18n";
 import styled from "@emotion/native";
 
+const Container = styled.View({
+  paddingHorizontal: spacing[5],
+});
+
+const Title = styled(Heading)({
+  paddingVertical: spacing[3],
+});
+
+const SignUpInput = styled(Input)({
+  marginVertical: spacing[2],
+});
+
+const SignUpButton = styled(LoadingButton)({
+  paddingVertical: spacing[3],
+});
+
 const PaddLoadingButton = styled(LoadingButton)({
   paddingVertical: spacing[3],
   paddingHorizontal: spacing[5],
@@ -26,53 +42,55 @@ function SignUpWithEmailScreen(props: any) {
 
   return (
     <Screen>
-      <Heading>{translate("signUpWithEmailScreen.title")}</Heading>
-      <PaddInput
-        value={credentialsFields.email.value}
-        onChangeText={credentialsFields.email.update}
-        label={translate("common.email").toLocaleUpperCase()}
-        placeholder={translate("common.placeholder.email")}
-        autoCompleteType="email"
-        keyboardType="email-address"
-        textContentType="emailAddress"
-        autoCapitalize="none"
-        error={
-          !!credentialsFields.email.value && !credentialsFields.email.isValid
-        }
-        errorMessage={translate("errors.invalidEmail")}
-      />
-      <PaddInput
-        value={credentialsFields.password.value}
-        onChangeText={credentialsFields.password.update}
-        label={translate("common.password").toLocaleUpperCase()}
-        placeholder={translate("common.placeholder.password")}
-        autoCompleteType="password"
-        textContentType="password"
-        secureTextEntry
-        error={
-          !!credentialsFields.password.value &&
-          !credentialsFields.password.isValid
-        }
-        errorMessage={translate("errors.invalidPassword")}
-      />
-      <PaddLoadingButton
-        isLoading={props.isLoading}
-        error={props.error}
-        onPress={() =>
-          props.signUp(
-            credentialsFields.email.value,
-            credentialsFields.password.value,
-          )
-        }
-        disabled={
-          !credentialsFields.email.value ||
-          !credentialsFields.password.value ||
-          !credentialsFields.password.isValid ||
-          !credentialsFields.email.isValid
-        }
-      >
-        {translate("common.signUp")}
-      </PaddLoadingButton>
+      <Container>
+        <Title>{translate("signUpWithEmailScreen.title")}</Title>
+        <SignUpInput
+          value={credentialsFields.email.value}
+          onChangeText={credentialsFields.email.update}
+          label={translate("common.email").toLocaleUpperCase()}
+          placeholder={translate("common.placeholder.email")}
+          autoCompleteType="email"
+          keyboardType="email-address"
+          textContentType="emailAddress"
+          autoCapitalize="none"
+          error={
+            !!credentialsFields.email.value && !credentialsFields.email.isValid
+          }
+          errorMessage={translate("errors.invalidEmail")}
+        />
+        <SignUpInput
+          value={credentialsFields.password.value}
+          onChangeText={credentialsFields.password.update}
+          label={translate("common.password").toLocaleUpperCase()}
+          placeholder={translate("common.placeholder.password")}
+          autoCompleteType="password"
+          textContentType="password"
+          secureTextEntry
+          error={
+            !!credentialsFields.password.value &&
+            !credentialsFields.password.isValid
+          }
+          errorMessage={translate("errors.invalidPassword")}
+        />
+        <SignUpButton
+          isLoading={props.isLoading}
+          error={props.error}
+          onPress={() =>
+            props.signUp(
+              credentialsFields.email.value,
+              credentialsFields.password.value,
+            )
+          }
+          disabled={
+            !credentialsFields.email.value ||
+            !credentialsFields.password.value ||
+            !credentialsFields.password.isValid ||
+            !credentialsFields.email.isValid
+          }
+        >
+          {translate("common.signUp")}
+        </SignUpButton>
+      </Container>
     </Screen>
   );
 }

@@ -23,7 +23,7 @@ const RootStack = (props: any) => {
         headerShown: false,
       }}
     >
-      {true ? (
+      {props.isSignedIn ? (
         <Stack.Screen name="mainStack" component={MainNavigator} />
       ) : (
         <Stack.Screen name="authStack" component={AuthNavigator} />

@@ -35,7 +35,7 @@ function HomeScreen(props: any) {
         }!`}</WelcomeTitle>
         <FiltersForm />
         <NewTodoForm />
-        {/* <TodoList /> */}
+        <TodoList />
       </Container>
     </Screen>
   );

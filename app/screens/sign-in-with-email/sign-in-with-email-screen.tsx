@@ -1,34 +1,35 @@
 import React from "react";
-import {
-  View,
-  ViewStyle,
-  Text,
-  TextStyle,
-  TouchableOpacity,
-} from "react-native";
+import { TouchableOpacity } from "react-native";
 import Heading from "../../components/heading/heading";
 import Input from "../../components/input/input";
 import Screen from "../../components/screen/screen";
 import LoadingButton from "../../components/loading-button/loading-button";
-import { startSignIn } from "../../actions/auth/auth";
+import { startSignIn, updateError } from "../../actions/auth/auth";
 import { connect } from "react-redux";
 import { translate } from "../../i18n";
 import { spacing } from "../../theme";
 import styled from "@emotion/native";
 
-const PaddLoadingButton = styled(LoadingButton)({
-  paddingVertical: spacing[3],
+const Container = styled.View({
   paddingHorizontal: spacing[5],
 });
 
-const PaddInput = styled(Input)({
-  paddingVertical: spacing[1],
-  paddingHorizontal: spacing[5],
+const Title = styled(Heading)({
+  paddingVertical: spacing[3],
+});
+
+const SignInInput = styled(Input)({
+  marginVertical: spacing[2],
+});
+
+const SignInButton = styled(LoadingButton)({
+  paddingVertical: spacing[3],
 });
 
 const SignUpMessage = styled.View({
   justifyContent: "center",
   flexDirection: "row",
+  paddingVertical: spacing[6],
 });
 
 const SignUpText = styled.Text({
@@ -41,53 +42,54 @@ const SignUpButton = styled.Text(props => ({
   fontSize: spacing[4],
 }));
 
-const PadHeading = styled(Heading)({
-  padding: spacing[3],
-});
-
 function SignInWithEmailScreen(props: any) {
   const [email, setEmail] = React.useState<string>("");
   const [password, setPassword] = React.useState<string>("");
 
   return (
     <Screen>
-      <PadHeading>{translate("signInWithEmailScreen.title")}</PadHeading>
-      <PaddInput
-        value={email}
-        onChangeText={setEmail}
-        placeholder={translate("common.placeholder.email")}
-        autoCompleteType="email"
-        autoFocus
-        keyboardType="email-address"
-        textContentType="emailAddress"
-        autoCapitalize="none"
-      />
-      <PaddInput
-        value={password}
-        onChangeText={setPassword}
-        placeholder={translate("common.placeholder.password")}
-        autoCompleteType="password"
-        textContentType="password"
-        secureTextEntry
-      />
-      <PaddLoadingButton
-        isLoading={props.isLoading}
-        error={props.error}
-        onPress={() => props.signIn(email, password)}
-        disabled={!email || !password}
-      >
-        {translate("common.signIn")}
-      </PaddLoadingButton>
-      <SignUpMessage>
-        <SignUpText>
-          {translate("signInWithEmailScreen.signUpMessage")}
-        </SignUpText>
-        <TouchableOpacity
-          onPress={() => props.navigation.push("SignUpWithEmail")}
+      <Container>
+        <Title>{translate("signInWithEmailScreen.title")}</Title>
+        <SignInInput
+          value={email}
+          onChangeText={setEmail}
+          placeholder={translate("common.placeholder.email")}
+          autoCompleteType="email"
+          autoFocus
+          keyboardType="email-address"
+          textContentType="emailAddress"
+          autoCapitalize="none"
+        />
+        <SignInInput
+          value={password}
+          onChangeText={setPassword}
+          placeholder={translate("common.placeholder.password")}
+          autoCompleteType="password"
+          textContentType="password"
+          secureTextEntry
+        />
+        <SignInButton
+          isLoading={props.isLoading}
+          error={props.error}
+          onPress={() => props.signIn(email, password)}
+          disabled={!email || !password}
         >
-          <SignUpButton>{translate("common.signUp")}</SignUpButton>
-        </TouchableOpacity>
-      </SignUpMessage>
+          {translate("common.signIn")}
+        </SignInButton>
+        <SignUpMessage>
+          <SignUpText>
+            {translate("signInWithEmailScreen.signUpMessage")}
+          </SignUpText>
+          <TouchableOpacity
+            onPress={() => {
+              props.clearError();
+              props.navigation.push("SignUpWithEmail");
+            }}
+          >
+            <SignUpButton>{translate("common.signUp")}</SignUpButton>
+          </TouchableOpacity>
+        </SignUpMessage>
+      </Container>
     </Screen>
   );
 }
@@ -95,6 +97,7 @@ function SignInWithEmailScreen(props: any) {
 const mapDispatchToProps = (dispatch: any) => ({
   signIn: (email: string, password: string) =>
     dispatch(startSignIn(email, password)),
+  clearError: () => dispatch(updateError(null)),
 });
 
 const mapStateToProps = (state: any) => ({

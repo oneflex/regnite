@@ -11,6 +11,7 @@ import styled from "@emotion/native";
 import Input from "../input/input";
 import Button from "../button/button";
 import { Category } from "../../types/filters";
+import { Keyboard } from "react-native";
 
 const Container = styled.View(() => ({
   paddingHorizontal: spacing[5],
@@ -61,6 +62,7 @@ const NewTodoForm: React.FC<NewTodoFormProps> = props => {
       type,
     });
     setDescription("");
+    Keyboard.dismiss();
   }
 
   return (

@@ -6,13 +6,23 @@ import { connect } from "react-redux";
 import Checkbox from "../checkbox/checkbox";
 import { startRemoveTodo, startUpdateTodo } from "../../actions/todos/todos";
 import { useTheme } from "@emotion/react";
+import Button from "../button/button";
 
-const Container = styled.View(props => ({
+const Container = styled.View({
+  flex: 1,
+  flexDirection: "row",
+  marginHorizontal: spacing[5],
+  marginVertical: spacing[1],
+});
+
+const Todo = styled.View(props => ({
+  flex: 1,
   flexDirection: "row",
   padding: spacing[5],
-  marginVertical: spacing[1],
-  marginHorizontal: spacing[5],
-  backgroundColor: props.theme.text[100],
+  backgroundColor:
+    props.category === "personal"
+      ? props.theme.primary[100]
+      : props.theme.primary[400],
 }));
 
 const CheckboxContainer = styled.View(() => ({
@@ -36,29 +46,49 @@ const Description = styled.Text<DescriptionProps>(props => ({
   opacity: props.isCompleted ? 0.3 : 1,
 }));
 
+const DeleteButton = styled(Button)(props => ({
+  padding: spacing[5],
+  // marginLeft: spacing[2],
+  backgroundColor:
+    props.category === "personal"
+      ? props.theme.primary[100]
+      : props.theme.primary[400],
+  borderColor:
+    props.category === "personal"
+      ? props.theme.primary[100]
+      : props.theme.primary[400],
+}));
+
 export const TodoItem: React.FC<TodoProps> = props => {
   const { style, description, isCompleted, type, id } = props;
   const theme = useTheme();
 
   return (
-    <Container style={style}>
-      <CheckboxContainer>
-        <Checkbox
-          isChecked={isCompleted}
-          size={30}
-          color={type === "personal" ? theme.primary[100] : theme.primary[400]}
-          handlePress={() => props.handleClickCheckbox(id, isCompleted)}
-        />
-      </CheckboxContainer>
-      <DescriptionContainer>
-        <Description isCompleted={isCompleted}>{description}</Description>
-      </DescriptionContainer>
-      {/* <TouchableOpacity
+    <Container>
+      <Todo category={type} style={style}>
+        <CheckboxContainer>
+          <Checkbox
+            isChecked={isCompleted}
+            size={30}
+            color={
+              type === "personal" ? theme.primary[100] : theme.primary[400]
+            }
+            handlePress={() => props.handleClickCheckbox(id, isCompleted)}
+          />
+        </CheckboxContainer>
+        <DescriptionContainer>
+          <Description isCompleted={isCompleted}>{description}</Description>
+        </DescriptionContainer>
+        {/* <TouchableOpacity
         style={REMOVE_BUTTON}
         onPress={() => props.handleClickRemove(id)}
       >
-        <Text style={REMOVE_BUTTON_TEXT}>🗑</Text>
+        <Text style={REMOVE_BUTTON_TEXT}></Text>
       </TouchableOpacity> */}
+      </Todo>
+      <DeleteButton category={type} kind="primary" fontSize={30}>
+        🗑
+      </DeleteButton>
     </Container>
   );
 };

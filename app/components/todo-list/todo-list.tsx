@@ -13,10 +13,12 @@ import TodoItem from "../todo-item/todo-item";
 
 const Container = styled.View(() => ({
   flex: 1,
+  marginTop: spacing[3],
 }));
 
 const SubHeading = styled(Heading)(() => ({
   paddingHorizontal: spacing[5],
+  marginBottom: spacing[3],
 }));
 
 const Todos = styled.FlatList(() => ({
@@ -40,7 +42,7 @@ export const TodoList: React.FC<TodoListProps> = props => {
 
   return (
     <Container style={style}>
-      <SubHeading scale={2}>
+      <SubHeading scale={3}>
         {translate("homeScreen.subtitle.todayTasks")}
       </SubHeading>
       <Todos
