@@ -1,66 +1,59 @@
 import * as React from "react";
 import { CategoryButtonProps } from "./category-button.props";
-import { TextStyle, TouchableOpacity, ViewStyle, Text } from "react-native";
+import { Pressable } from "react-native";
 import { spacing } from "../../theme";
-import { AnimatedCircularProgress } from "react-native-circular-progress";
+import styled from "@emotion/native";
+import { typography } from "../../theme/typography";
+import { Category } from "../../types/filters";
 
-const CATEGORY_BUTTON: ViewStyle = {
-  justifyContent: "center",
-  alignItems: "center",
-  backgroundColor: "white",
-  marginVertical: spacing[2],
-  marginRight: spacing[3],
-  padding: spacing[5],
-  width: 130,
-  height: 80,
-  borderRadius: 15,
-  shadowColor: "#000",
-  shadowOffset: {
-    width: 2,
-    height: 4,
-  },
-  shadowOpacity: 0.19,
-  shadowRadius: 2.65,
-  elevation: 4,
-};
-
-const CATEGORY_BUTTON_TEXT: TextStyle = {
-  fontSize: spacing[4],
-  color: "white",
-  textAlignVertical: "center",
-};
-
-const CategoryButton: React.FC<CategoryButtonProps> = props => {
-  const {
-    style,
-    handleClick,
-    color,
-    todosNumber,
-    todosCompleted,
-    text,
-  } = props;
-
-  const calculateProgress = () => {
-    if (todosNumber === 0) {
-      return 100;
-    }
-    return (todosCompleted / todosNumber) * 100;
+interface ContainerProps {
+  pressed: boolean;
+  category: Category;
+}
+const Container = styled.View<ContainerProps>(props => {
+  const backgroundColor = {
+    all: props.theme.text[100],
+    personal: props.theme.primary[100],
+    work: props.theme.primary[400],
   };
 
+  return {
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+    backgroundColor: backgroundColor[props.category],
+    paddingVertical: spacing[2],
+    paddingHorizontal: spacing[2],
+    marginVertical: spacing[2],
+    marginRight: spacing[3],
+    width: 120,
+    height: 90,
+    opacity: props.pressed ? 0.2 : 1,
+  };
+});
+
+const Text = styled.Text(props => ({
+  color: props.theme.background[100],
+  fontSize: 22,
+  fontFamily: typography.primary.bold,
+}));
+
+const ProgressText = styled(Text)(() => ({
+  fontSize: 20,
+  fontFamily: typography.primary.regular,
+}));
+
+const CategoryButton: React.FC<CategoryButtonProps> = props => {
+  const { style, handleClick, todosNumber, todosCompleted, text } = props;
+
   return (
-    <TouchableOpacity style={[CATEGORY_BUTTON, style]} onPress={handleClick}>
-      <Text style={[CATEGORY_BUTTON_TEXT, { color }]}>
-        {text}-{todosNumber}
-      </Text>
-      <AnimatedCircularProgress
-        size={30}
-        width={4}
-        padding={3}
-        fill={calculateProgress()}
-        tintColor={color}
-        backgroundColor="#3d5875"
-      />
-    </TouchableOpacity>
+    <Pressable onPress={handleClick}>
+      {({ pressed }) => (
+        <Container category={props.category} pressed={pressed} style={style}>
+          <Text>{text}</Text>
+          <ProgressText>{`${todosCompleted}/${todosNumber}`}</ProgressText>
+        </Container>
+      )}
+    </Pressable>
   );
 };
 

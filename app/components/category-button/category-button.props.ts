@@ -1,4 +1,5 @@
 import { ViewStyle } from "react-native";
+import { Category } from "../../types/filters";
 
 export interface CategoryButtonProps {
   /**
@@ -14,9 +15,9 @@ export interface CategoryButtonProps {
    */
   todosCompleted: number;
   /**
-   * Color for the text
+   * The category type
    */
-  color: string;
+  category: Category;
   /**
    * text
    */
