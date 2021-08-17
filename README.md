@@ -1,4 +1,4 @@
-![IMG_8168](https://user-images.githubusercontent.com/42813496/129691548-7f2b8d40-b92a-4f15-9cf1-e7ba48712a20.PNG)
+<p align="center"><img src="https://user-images.githubusercontent.com/42813496/129691548-7f2b8d40-b92a-4f15-9cf1-e7ba48712a20.PNG" alt="logo" width="414px"></p>
 
 # Regnite - React Native + Firebase boilerplate
 
@@ -16,7 +16,7 @@ Regnite uses the Ignite tech stack with some additions and modifications:
 - TypeScript
 - Firebase
 - React Navigation 5
-- Redux [(Why Redux?)](https://github.com/oneflex/regnite#why-redux?)
+- Redux [(Why Redux?)](https://github.com/oneflex/regnite#why-redux)
 - Redux Thunk and Redux Persist
 - Emotion for reactive theming
 - React Native Debugger
